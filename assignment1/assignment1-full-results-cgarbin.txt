@@ -1,0 +1,2201 @@
+COT-6930 Natural Language Process, Spring 2019
+Assignment 1 - full results
+Christian Garbin
+
+This file contains the full results for each task, as produced by the code.
+
+-----
+Sentence detection
+
+
+[00] Anglo-French Channel Tunnel operator Eurotunnel Monday announced a deal giving its creditor banks 45.5 percent of the company in return for wiping out one billion pounds ($1.56 billion) of its debt.
+[01] The long-awaited restructuring brings to an end months of wrangling between Eurotunnel and the 225 banks to which it owes nearly nine billion pounds ($14.1 billion).
+[02] The deal, announced simultaneously in Paris and London, brings the company back from the brink of insolvency but leaves shareholders owning only 54.5 percent of the company.
+[03] "The restructuring plan provides Eurotunnel with the medium-term financial stability to allow it to consolidate its substantial commercial achievements to date and to develop its operations," Eurotunnel co-chairman Alastair Morton said.
+[04] The firm was now making a profit before interest, he added.
+[05] Although shareholders will see their interests diluted, they were offered the prospect of a brighter future after months of uncertainty while Eurotunnel wrestled to reduce crippling interest payments negotiated during the tunnel's construction.
+[06] Eurotunnel, which has taken around half the cross-Channel market from the European ferry companies, said a strong operating performance could allow it to pay its first dividend within the next 10 years.
+[07] French co-chairman Patrick Ponsolle said shareholders would have to be patient before they could reap the benefits of the company's success.
+[08] He called the debt restructuring plan "an acceptable compromise" for holders of Eurotunnel shares.
+[09] The company said there was still considerable work to be done to finalise and agree on the details of the plan before it can be submitted to shareholders and the full 225 bank syndicate for approval, probably early in 1997.
+[10] Monday's announcement followed two weeks of highly secretive negotiations between Eurotunnel and its six leading banks.
+[11] This was extended to the 24 "instructing banks" at a meeting late last week in London.
+[12] Eurotunnel said the debt-for-equity swap would be at 130 pence, or 10.40 francs, per share.
+[13] That is considerably below the level of around 160 pence widely reported before announcement of the deal, and will reduce outstanding debt of 8.7 billion pounds ($13.6 billion) by 1.0 billion ($1.56 billion).
+[14] The company said a further 3.7 billion pounds ($5.8 billion) of debt would be converted into new financial instruments and existing shareholders would be able to participate in this issue.
+[15] If they choose not to take up free warrants entitling them to subscribe to this, Eurotunnel said shareholders' interests may be reduced further to just over 39 percent of the company by the end of December 2003.
+[16] Eurotunnel's shares, which were suspended last week at 113.5 pence ahead of Monday's announcement, should resume trading on Tuesday, the company said.
+
+
+-----
+Tokenization - simple
+
+
+Anglo-French Channel Tunnel operator Eurotunnel Monday announced a deal giving its creditor banks 45.5 percent of the company in return for wiping out one billion pounds ($1.56 billion) of its debt.
+[00] Anglo
+[01] -
+[02] French
+[03] Channel
+[04] Tunnel
+[05] operator
+[06] Eurotunnel
+[07] Monday
+[08] announced
+[09] a
+[10] deal
+[11] giving
+[12] its
+[13] creditor
+[14] banks
+[15] 45
+[16] .
+[17] 5
+[18] percent
+[19] of
+[20] the
+[21] company
+[22] in
+[23] return
+[24] for
+[25] wiping
+[26] out
+[27] one
+[28] billion
+[29] pounds
+[30] (
+[31] $
+[32] 1
+[33] .
+[34] 56
+[35] billion
+[36] )
+[37] of
+[38] its
+[39] debt
+[40] .
+
+The long-awaited restructuring brings to an end months of wrangling between Eurotunnel and the 225 banks to which it owes nearly nine billion pounds ($14.1 billion).
+[00] The
+[01] long
+[02] -
+[03] awaited
+[04] restructuring
+[05] brings
+[06] to
+[07] an
+[08] end
+[09] months
+[10] of
+[11] wrangling
+[12] between
+[13] Eurotunnel
+[14] and
+[15] the
+[16] 225
+[17] banks
+[18] to
+[19] which
+[20] it
+[21] owes
+[22] nearly
+[23] nine
+[24] billion
+[25] pounds
+[26] (
+[27] $
+[28] 14
+[29] .
+[30] 1
+[31] billion
+[32] )
+[33] .
+
+The deal, announced simultaneously in Paris and London, brings the company back from the brink of insolvency but leaves shareholders owning only 54.5 percent of the company.
+[00] The
+[01] deal
+[02] ,
+[03] announced
+[04] simultaneously
+[05] in
+[06] Paris
+[07] and
+[08] London
+[09] ,
+[10] brings
+[11] the
+[12] company
+[13] back
+[14] from
+[15] the
+[16] brink
+[17] of
+[18] insolvency
+[19] but
+[20] leaves
+[21] shareholders
+[22] owning
+[23] only
+[24] 54
+[25] .
+[26] 5
+[27] percent
+[28] of
+[29] the
+[30] company
+[31] .
+
+"The restructuring plan provides Eurotunnel with the medium-term financial stability to allow it to consolidate its substantial commercial achievements to date and to develop its operations," Eurotunnel co-chairman Alastair Morton said.
+[00] "
+[01] The
+[02] restructuring
+[03] plan
+[04] provides
+[05] Eurotunnel
+[06] with
+[07] the
+[08] medium
+[09] -
+[10] term
+[11] financial
+[12] stability
+[13] to
+[14] allow
+[15] it
+[16] to
+[17] consolidate
+[18] its
+[19] substantial
+[20] commercial
+[21] achievements
+[22] to
+[23] date
+[24] and
+[25] to
+[26] develop
+[27] its
+[28] operations
+[29] ,
+[30] "
+[31] Eurotunnel
+[32] co
+[33] -
+[34] chairman
+[35] Alastair
+[36] Morton
+[37] said
+[38] .
+
+The firm was now making a profit before interest, he added.
+[00] The
+[01] firm
+[02] was
+[03] now
+[04] making
+[05] a
+[06] profit
+[07] before
+[08] interest
+[09] ,
+[10] he
+[11] added
+[12] .
+
+Although shareholders will see their interests diluted, they were offered the prospect of a brighter future after months of uncertainty while Eurotunnel wrestled to reduce crippling interest payments negotiated during the tunnel's construction.
+[00] Although
+[01] shareholders
+[02] will
+[03] see
+[04] their
+[05] interests
+[06] diluted
+[07] ,
+[08] they
+[09] were
+[10] offered
+[11] the
+[12] prospect
+[13] of
+[14] a
+[15] brighter
+[16] future
+[17] after
+[18] months
+[19] of
+[20] uncertainty
+[21] while
+[22] Eurotunnel
+[23] wrestled
+[24] to
+[25] reduce
+[26] crippling
+[27] interest
+[28] payments
+[29] negotiated
+[30] during
+[31] the
+[32] tunnel
+[33] '
+[34] s
+[35] construction
+[36] .
+
+Eurotunnel, which has taken around half the cross-Channel market from the European ferry companies, said a strong operating performance could allow it to pay its first dividend within the next 10 years.
+[00] Eurotunnel
+[01] ,
+[02] which
+[03] has
+[04] taken
+[05] around
+[06] half
+[07] the
+[08] cross
+[09] -
+[10] Channel
+[11] market
+[12] from
+[13] the
+[14] European
+[15] ferry
+[16] companies
+[17] ,
+[18] said
+[19] a
+[20] strong
+[21] operating
+[22] performance
+[23] could
+[24] allow
+[25] it
+[26] to
+[27] pay
+[28] its
+[29] first
+[30] dividend
+[31] within
+[32] the
+[33] next
+[34] 10
+[35] years
+[36] .
+
+French co-chairman Patrick Ponsolle said shareholders would have to be patient before they could reap the benefits of the company's success.
+[00] French
+[01] co
+[02] -
+[03] chairman
+[04] Patrick
+[05] Ponsolle
+[06] said
+[07] shareholders
+[08] would
+[09] have
+[10] to
+[11] be
+[12] patient
+[13] before
+[14] they
+[15] could
+[16] reap
+[17] the
+[18] benefits
+[19] of
+[20] the
+[21] company
+[22] '
+[23] s
+[24] success
+[25] .
+
+He called the debt restructuring plan "an acceptable compromise" for holders of Eurotunnel shares.
+[00] He
+[01] called
+[02] the
+[03] debt
+[04] restructuring
+[05] plan
+[06] "
+[07] an
+[08] acceptable
+[09] compromise
+[10] "
+[11] for
+[12] holders
+[13] of
+[14] Eurotunnel
+[15] shares
+[16] .
+
+The company said there was still considerable work to be done to finalise and agree on the details of the plan before it can be submitted to shareholders and the full 225 bank syndicate for approval, probably early in 1997.
+[00] The
+[01] company
+[02] said
+[03] there
+[04] was
+[05] still
+[06] considerable
+[07] work
+[08] to
+[09] be
+[10] done
+[11] to
+[12] finalise
+[13] and
+[14] agree
+[15] on
+[16] the
+[17] details
+[18] of
+[19] the
+[20] plan
+[21] before
+[22] it
+[23] can
+[24] be
+[25] submitted
+[26] to
+[27] shareholders
+[28] and
+[29] the
+[30] full
+[31] 225
+[32] bank
+[33] syndicate
+[34] for
+[35] approval
+[36] ,
+[37] probably
+[38] early
+[39] in
+[40] 1997
+[41] .
+
+Monday's announcement followed two weeks of highly secretive negotiations between Eurotunnel and its six leading banks.
+[00] Monday
+[01] '
+[02] s
+[03] announcement
+[04] followed
+[05] two
+[06] weeks
+[07] of
+[08] highly
+[09] secretive
+[10] negotiations
+[11] between
+[12] Eurotunnel
+[13] and
+[14] its
+[15] six
+[16] leading
+[17] banks
+[18] .
+
+This was extended to the 24 "instructing banks" at a meeting late last week in London.
+[00] This
+[01] was
+[02] extended
+[03] to
+[04] the
+[05] 24
+[06] "
+[07] instructing
+[08] banks
+[09] "
+[10] at
+[11] a
+[12] meeting
+[13] late
+[14] last
+[15] week
+[16] in
+[17] London
+[18] .
+
+Eurotunnel said the debt-for-equity swap would be at 130 pence, or 10.40 francs, per share.
+[00] Eurotunnel
+[01] said
+[02] the
+[03] debt
+[04] -
+[05] for
+[06] -
+[07] equity
+[08] swap
+[09] would
+[10] be
+[11] at
+[12] 130
+[13] pence
+[14] ,
+[15] or
+[16] 10
+[17] .
+[18] 40
+[19] francs
+[20] ,
+[21] per
+[22] share
+[23] .
+
+That is considerably below the level of around 160 pence widely reported before announcement of the deal, and will reduce outstanding debt of 8.7 billion pounds ($13.6 billion) by 1.0 billion ($1.56 billion).
+[00] That
+[01] is
+[02] considerably
+[03] below
+[04] the
+[05] level
+[06] of
+[07] around
+[08] 160
+[09] pence
+[10] widely
+[11] reported
+[12] before
+[13] announcement
+[14] of
+[15] the
+[16] deal
+[17] ,
+[18] and
+[19] will
+[20] reduce
+[21] outstanding
+[22] debt
+[23] of
+[24] 8
+[25] .
+[26] 7
+[27] billion
+[28] pounds
+[29] (
+[30] $
+[31] 13
+[32] .
+[33] 6
+[34] billion
+[35] )
+[36] by
+[37] 1
+[38] .
+[39] 0
+[40] billion
+[41] (
+[42] $
+[43] 1
+[44] .
+[45] 56
+[46] billion
+[47] )
+[48] .
+
+The company said a further 3.7 billion pounds ($5.8 billion) of debt would be converted into new financial instruments and existing shareholders would be able to participate in this issue.
+[00] The
+[01] company
+[02] said
+[03] a
+[04] further
+[05] 3
+[06] .
+[07] 7
+[08] billion
+[09] pounds
+[10] (
+[11] $
+[12] 5
+[13] .
+[14] 8
+[15] billion
+[16] )
+[17] of
+[18] debt
+[19] would
+[20] be
+[21] converted
+[22] into
+[23] new
+[24] financial
+[25] instruments
+[26] and
+[27] existing
+[28] shareholders
+[29] would
+[30] be
+[31] able
+[32] to
+[33] participate
+[34] in
+[35] this
+[36] issue
+[37] .
+
+If they choose not to take up free warrants entitling them to subscribe to this, Eurotunnel said shareholders' interests may be reduced further to just over 39 percent of the company by the end of December 2003.
+[00] If
+[01] they
+[02] choose
+[03] not
+[04] to
+[05] take
+[06] up
+[07] free
+[08] warrants
+[09] entitling
+[10] them
+[11] to
+[12] subscribe
+[13] to
+[14] this
+[15] ,
+[16] Eurotunnel
+[17] said
+[18] shareholders
+[19] '
+[20] interests
+[21] may
+[22] be
+[23] reduced
+[24] further
+[25] to
+[26] just
+[27] over
+[28] 39
+[29] percent
+[30] of
+[31] the
+[32] company
+[33] by
+[34] the
+[35] end
+[36] of
+[37] December
+[38] 2003
+[39] .
+
+Eurotunnel's shares, which were suspended last week at 113.5 pence ahead of Monday's announcement, should resume trading on Tuesday, the company said.
+[00] Eurotunnel
+[01] '
+[02] s
+[03] shares
+[04] ,
+[05] which
+[06] were
+[07] suspended
+[08] last
+[09] week
+[10] at
+[11] 113
+[12] .
+[13] 5
+[14] pence
+[15] ahead
+[16] of
+[17] Monday
+[18] '
+[19] s
+[20] announcement
+[21] ,
+[22] should
+[23] resume
+[24] trading
+[25] on
+[26] Tuesday
+[27] ,
+[28] the
+[29] company
+[30] said
+[31] .
+
+
+-----
+Tokenization - whitespace
+
+
+Anglo-French Channel Tunnel operator Eurotunnel Monday announced a deal giving its creditor banks 45.5 percent of the company in return for wiping out one billion pounds ($1.56 billion) of its debt.
+[00] Anglo-French
+[01] Channel
+[02] Tunnel
+[03] operator
+[04] Eurotunnel
+[05] Monday
+[06] announced
+[07] a
+[08] deal
+[09] giving
+[10] its
+[11] creditor
+[12] banks
+[13] 45.5
+[14] percent
+[15] of
+[16] the
+[17] company
+[18] in
+[19] return
+[20] for
+[21] wiping
+[22] out
+[23] one
+[24] billion
+[25] pounds
+[26] ($1.56
+[27] billion)
+[28] of
+[29] its
+[30] debt.
+
+The long-awaited restructuring brings to an end months of wrangling between Eurotunnel and the 225 banks to which it owes nearly nine billion pounds ($14.1 billion).
+[00] The
+[01] long-awaited
+[02] restructuring
+[03] brings
+[04] to
+[05] an
+[06] end
+[07] months
+[08] of
+[09] wrangling
+[10] between
+[11] Eurotunnel
+[12] and
+[13] the
+[14] 225
+[15] banks
+[16] to
+[17] which
+[18] it
+[19] owes
+[20] nearly
+[21] nine
+[22] billion
+[23] pounds
+[24] ($14.1
+[25] billion).
+
+The deal, announced simultaneously in Paris and London, brings the company back from the brink of insolvency but leaves shareholders owning only 54.5 percent of the company.
+[00] The
+[01] deal,
+[02] announced
+[03] simultaneously
+[04] in
+[05] Paris
+[06] and
+[07] London,
+[08] brings
+[09] the
+[10] company
+[11] back
+[12] from
+[13] the
+[14] brink
+[15] of
+[16] insolvency
+[17] but
+[18] leaves
+[19] shareholders
+[20] owning
+[21] only
+[22] 54.5
+[23] percent
+[24] of
+[25] the
+[26] company.
+
+"The restructuring plan provides Eurotunnel with the medium-term financial stability to allow it to consolidate its substantial commercial achievements to date and to develop its operations," Eurotunnel co-chairman Alastair Morton said.
+[00] "The
+[01] restructuring
+[02] plan
+[03] provides
+[04] Eurotunnel
+[05] with
+[06] the
+[07] medium-term
+[08] financial
+[09] stability
+[10] to
+[11] allow
+[12] it
+[13] to
+[14] consolidate
+[15] its
+[16] substantial
+[17] commercial
+[18] achievements
+[19] to
+[20] date
+[21] and
+[22] to
+[23] develop
+[24] its
+[25] operations,"
+[26] Eurotunnel
+[27] co-chairman
+[28] Alastair
+[29] Morton
+[30] said.
+
+The firm was now making a profit before interest, he added.
+[00] The
+[01] firm
+[02] was
+[03] now
+[04] making
+[05] a
+[06] profit
+[07] before
+[08] interest,
+[09] he
+[10] added.
+
+Although shareholders will see their interests diluted, they were offered the prospect of a brighter future after months of uncertainty while Eurotunnel wrestled to reduce crippling interest payments negotiated during the tunnel's construction.
+[00] Although
+[01] shareholders
+[02] will
+[03] see
+[04] their
+[05] interests
+[06] diluted,
+[07] they
+[08] were
+[09] offered
+[10] the
+[11] prospect
+[12] of
+[13] a
+[14] brighter
+[15] future
+[16] after
+[17] months
+[18] of
+[19] uncertainty
+[20] while
+[21] Eurotunnel
+[22] wrestled
+[23] to
+[24] reduce
+[25] crippling
+[26] interest
+[27] payments
+[28] negotiated
+[29] during
+[30] the
+[31] tunnel's
+[32] construction.
+
+Eurotunnel, which has taken around half the cross-Channel market from the European ferry companies, said a strong operating performance could allow it to pay its first dividend within the next 10 years.
+[00] Eurotunnel,
+[01] which
+[02] has
+[03] taken
+[04] around
+[05] half
+[06] the
+[07] cross-Channel
+[08] market
+[09] from
+[10] the
+[11] European
+[12] ferry
+[13] companies,
+[14] said
+[15] a
+[16] strong
+[17] operating
+[18] performance
+[19] could
+[20] allow
+[21] it
+[22] to
+[23] pay
+[24] its
+[25] first
+[26] dividend
+[27] within
+[28] the
+[29] next
+[30] 10
+[31] years.
+
+French co-chairman Patrick Ponsolle said shareholders would have to be patient before they could reap the benefits of the company's success.
+[00] French
+[01] co-chairman
+[02] Patrick
+[03] Ponsolle
+[04] said
+[05] shareholders
+[06] would
+[07] have
+[08] to
+[09] be
+[10] patient
+[11] before
+[12] they
+[13] could
+[14] reap
+[15] the
+[16] benefits
+[17] of
+[18] the
+[19] company's
+[20] success.
+
+He called the debt restructuring plan "an acceptable compromise" for holders of Eurotunnel shares.
+[00] He
+[01] called
+[02] the
+[03] debt
+[04] restructuring
+[05] plan
+[06] "an
+[07] acceptable
+[08] compromise"
+[09] for
+[10] holders
+[11] of
+[12] Eurotunnel
+[13] shares.
+
+The company said there was still considerable work to be done to finalise and agree on the details of the plan before it can be submitted to shareholders and the full 225 bank syndicate for approval, probably early in 1997.
+[00] The
+[01] company
+[02] said
+[03] there
+[04] was
+[05] still
+[06] considerable
+[07] work
+[08] to
+[09] be
+[10] done
+[11] to
+[12] finalise
+[13] and
+[14] agree
+[15] on
+[16] the
+[17] details
+[18] of
+[19] the
+[20] plan
+[21] before
+[22] it
+[23] can
+[24] be
+[25] submitted
+[26] to
+[27] shareholders
+[28] and
+[29] the
+[30] full
+[31] 225
+[32] bank
+[33] syndicate
+[34] for
+[35] approval,
+[36] probably
+[37] early
+[38] in
+[39] 1997.
+
+Monday's announcement followed two weeks of highly secretive negotiations between Eurotunnel and its six leading banks.
+[00] Monday's
+[01] announcement
+[02] followed
+[03] two
+[04] weeks
+[05] of
+[06] highly
+[07] secretive
+[08] negotiations
+[09] between
+[10] Eurotunnel
+[11] and
+[12] its
+[13] six
+[14] leading
+[15] banks.
+
+This was extended to the 24 "instructing banks" at a meeting late last week in London.
+[00] This
+[01] was
+[02] extended
+[03] to
+[04] the
+[05] 24
+[06] "instructing
+[07] banks"
+[08] at
+[09] a
+[10] meeting
+[11] late
+[12] last
+[13] week
+[14] in
+[15] London.
+
+Eurotunnel said the debt-for-equity swap would be at 130 pence, or 10.40 francs, per share.
+[00] Eurotunnel
+[01] said
+[02] the
+[03] debt-for-equity
+[04] swap
+[05] would
+[06] be
+[07] at
+[08] 130
+[09] pence,
+[10] or
+[11] 10.40
+[12] francs,
+[13] per
+[14] share.
+
+That is considerably below the level of around 160 pence widely reported before announcement of the deal, and will reduce outstanding debt of 8.7 billion pounds ($13.6 billion) by 1.0 billion ($1.56 billion).
+[00] That
+[01] is
+[02] considerably
+[03] below
+[04] the
+[05] level
+[06] of
+[07] around
+[08] 160
+[09] pence
+[10] widely
+[11] reported
+[12] before
+[13] announcement
+[14] of
+[15] the
+[16] deal,
+[17] and
+[18] will
+[19] reduce
+[20] outstanding
+[21] debt
+[22] of
+[23] 8.7
+[24] billion
+[25] pounds
+[26] ($13.6
+[27] billion)
+[28] by
+[29] 1.0
+[30] billion
+[31] ($1.56
+[32] billion).
+
+The company said a further 3.7 billion pounds ($5.8 billion) of debt would be converted into new financial instruments and existing shareholders would be able to participate in this issue.
+[00] The
+[01] company
+[02] said
+[03] a
+[04] further
+[05] 3.7
+[06] billion
+[07] pounds
+[08] ($5.8
+[09] billion)
+[10] of
+[11] debt
+[12] would
+[13] be
+[14] converted
+[15] into
+[16] new
+[17] financial
+[18] instruments
+[19] and
+[20] existing
+[21] shareholders
+[22] would
+[23] be
+[24] able
+[25] to
+[26] participate
+[27] in
+[28] this
+[29] issue.
+
+If they choose not to take up free warrants entitling them to subscribe to this, Eurotunnel said shareholders' interests may be reduced further to just over 39 percent of the company by the end of December 2003.
+[00] If
+[01] they
+[02] choose
+[03] not
+[04] to
+[05] take
+[06] up
+[07] free
+[08] warrants
+[09] entitling
+[10] them
+[11] to
+[12] subscribe
+[13] to
+[14] this,
+[15] Eurotunnel
+[16] said
+[17] shareholders'
+[18] interests
+[19] may
+[20] be
+[21] reduced
+[22] further
+[23] to
+[24] just
+[25] over
+[26] 39
+[27] percent
+[28] of
+[29] the
+[30] company
+[31] by
+[32] the
+[33] end
+[34] of
+[35] December
+[36] 2003.
+
+Eurotunnel's shares, which were suspended last week at 113.5 pence ahead of Monday's announcement, should resume trading on Tuesday, the company said.
+[00] Eurotunnel's
+[01] shares,
+[02] which
+[03] were
+[04] suspended
+[05] last
+[06] week
+[07] at
+[08] 113.5
+[09] pence
+[10] ahead
+[11] of
+[12] Monday's
+[13] announcement,
+[14] should
+[15] resume
+[16] trading
+[17] on
+[18] Tuesday,
+[19] the
+[20] company
+[21] said.
+
+
+-----
+Tokenization - ME (maximum entropy - probabilistic)
+
+
+Anglo-French Channel Tunnel operator Eurotunnel Monday announced a deal giving its creditor banks 45.5 percent of the company in return for wiping out one billion pounds ($1.56 billion) of its debt.
+[00] Anglo-French
+[01] Channel
+[02] Tunnel
+[03] operator
+[04] Eurotunnel
+[05] Monday
+[06] announced
+[07] a
+[08] deal
+[09] giving
+[10] its
+[11] creditor
+[12] banks
+[13] 45.5
+[14] percent
+[15] of
+[16] the
+[17] company
+[18] in
+[19] return
+[20] for
+[21] wiping
+[22] out
+[23] one
+[24] billion
+[25] pounds
+[26] (
+[27] $
+[28] 1.56
+[29] billion
+[30] )
+[31] of
+[32] its
+[33] debt
+[34] .
+
+The long-awaited restructuring brings to an end months of wrangling between Eurotunnel and the 225 banks to which it owes nearly nine billion pounds ($14.1 billion).
+[00] The
+[01] long-awaited
+[02] restructuring
+[03] brings
+[04] to
+[05] an
+[06] end
+[07] months
+[08] of
+[09] wrangling
+[10] between
+[11] Eurotunnel
+[12] and
+[13] the
+[14] 225
+[15] banks
+[16] to
+[17] which
+[18] it
+[19] owes
+[20] nearly
+[21] nine
+[22] billion
+[23] pounds
+[24] (
+[25] $
+[26] 14.1
+[27] billion
+[28] )
+[29] .
+
+The deal, announced simultaneously in Paris and London, brings the company back from the brink of insolvency but leaves shareholders owning only 54.5 percent of the company.
+[00] The
+[01] deal
+[02] ,
+[03] announced
+[04] simultaneously
+[05] in
+[06] Paris
+[07] and
+[08] London
+[09] ,
+[10] brings
+[11] the
+[12] company
+[13] back
+[14] from
+[15] the
+[16] brink
+[17] of
+[18] insolvency
+[19] but
+[20] leaves
+[21] shareholders
+[22] owning
+[23] only
+[24] 54.5
+[25] percent
+[26] of
+[27] the
+[28] company
+[29] .
+
+"The restructuring plan provides Eurotunnel with the medium-term financial stability to allow it to consolidate its substantial commercial achievements to date and to develop its operations," Eurotunnel co-chairman Alastair Morton said.
+[00] "
+[01] The
+[02] restructuring
+[03] plan
+[04] provides
+[05] Eurotunnel
+[06] with
+[07] the
+[08] medium-term
+[09] financial
+[10] stability
+[11] to
+[12] allow
+[13] it
+[14] to
+[15] consolidate
+[16] its
+[17] substantial
+[18] commercial
+[19] achievements
+[20] to
+[21] date
+[22] and
+[23] to
+[24] develop
+[25] its
+[26] operations
+[27] ,
+[28] "
+[29] Eurotunnel
+[30] co-chairman
+[31] Alastair
+[32] Morton
+[33] said
+[34] .
+
+The firm was now making a profit before interest, he added.
+[00] The
+[01] firm
+[02] was
+[03] now
+[04] making
+[05] a
+[06] profit
+[07] before
+[08] interest
+[09] ,
+[10] he
+[11] added
+[12] .
+
+Although shareholders will see their interests diluted, they were offered the prospect of a brighter future after months of uncertainty while Eurotunnel wrestled to reduce crippling interest payments negotiated during the tunnel's construction.
+[00] Although
+[01] shareholders
+[02] will
+[03] see
+[04] their
+[05] interests
+[06] diluted
+[07] ,
+[08] they
+[09] were
+[10] offered
+[11] the
+[12] prospect
+[13] of
+[14] a
+[15] brighter
+[16] future
+[17] after
+[18] months
+[19] of
+[20] uncertainty
+[21] while
+[22] Eurotunnel
+[23] wrestled
+[24] to
+[25] reduce
+[26] crippling
+[27] interest
+[28] payments
+[29] negotiated
+[30] during
+[31] the
+[32] tunnel
+[33] 's
+[34] construction
+[35] .
+
+Eurotunnel, which has taken around half the cross-Channel market from the European ferry companies, said a strong operating performance could allow it to pay its first dividend within the next 10 years.
+[00] Eurotunnel
+[01] ,
+[02] which
+[03] has
+[04] taken
+[05] around
+[06] half
+[07] the
+[08] cross-Channel
+[09] market
+[10] from
+[11] the
+[12] European
+[13] ferry
+[14] companies
+[15] ,
+[16] said
+[17] a
+[18] strong
+[19] operating
+[20] performance
+[21] could
+[22] allow
+[23] it
+[24] to
+[25] pay
+[26] its
+[27] first
+[28] dividend
+[29] within
+[30] the
+[31] next
+[32] 10
+[33] years
+[34] .
+
+French co-chairman Patrick Ponsolle said shareholders would have to be patient before they could reap the benefits of the company's success.
+[00] French
+[01] co-chairman
+[02] Patrick
+[03] Ponsolle
+[04] said
+[05] shareholders
+[06] would
+[07] have
+[08] to
+[09] be
+[10] patient
+[11] before
+[12] they
+[13] could
+[14] reap
+[15] the
+[16] benefits
+[17] of
+[18] the
+[19] company
+[20] 's
+[21] success
+[22] .
+
+He called the debt restructuring plan "an acceptable compromise" for holders of Eurotunnel shares.
+[00] He
+[01] called
+[02] the
+[03] debt
+[04] restructuring
+[05] plan
+[06] "
+[07] an
+[08] acceptable
+[09] compromise
+[10] "
+[11] for
+[12] holders
+[13] of
+[14] Eurotunnel
+[15] shares
+[16] .
+
+The company said there was still considerable work to be done to finalise and agree on the details of the plan before it can be submitted to shareholders and the full 225 bank syndicate for approval, probably early in 1997.
+[00] The
+[01] company
+[02] said
+[03] there
+[04] was
+[05] still
+[06] considerable
+[07] work
+[08] to
+[09] be
+[10] done
+[11] to
+[12] finalise
+[13] and
+[14] agree
+[15] on
+[16] the
+[17] details
+[18] of
+[19] the
+[20] plan
+[21] before
+[22] it
+[23] can
+[24] be
+[25] submitted
+[26] to
+[27] shareholders
+[28] and
+[29] the
+[30] full
+[31] 225
+[32] bank
+[33] syndicate
+[34] for
+[35] approval
+[36] ,
+[37] probably
+[38] early
+[39] in
+[40] 1997
+[41] .
+
+Monday's announcement followed two weeks of highly secretive negotiations between Eurotunnel and its six leading banks.
+[00] Monday
+[01] 's
+[02] announcement
+[03] followed
+[04] two
+[05] weeks
+[06] of
+[07] highly
+[08] secretive
+[09] negotiations
+[10] between
+[11] Eurotunnel
+[12] and
+[13] its
+[14] six
+[15] leading
+[16] banks
+[17] .
+
+This was extended to the 24 "instructing banks" at a meeting late last week in London.
+[00] This
+[01] was
+[02] extended
+[03] to
+[04] the
+[05] 24
+[06] "instructing
+[07] banks
+[08] "
+[09] at
+[10] a
+[11] meeting
+[12] late
+[13] last
+[14] week
+[15] in
+[16] London
+[17] .
+
+Eurotunnel said the debt-for-equity swap would be at 130 pence, or 10.40 francs, per share.
+[00] Eurotunnel
+[01] said
+[02] the
+[03] debt-for-equity
+[04] swap
+[05] would
+[06] be
+[07] at
+[08] 130
+[09] pence
+[10] ,
+[11] or
+[12] 10.40
+[13] francs
+[14] ,
+[15] per
+[16] share
+[17] .
+
+That is considerably below the level of around 160 pence widely reported before announcement of the deal, and will reduce outstanding debt of 8.7 billion pounds ($13.6 billion) by 1.0 billion ($1.56 billion).
+[00] That
+[01] is
+[02] considerably
+[03] below
+[04] the
+[05] level
+[06] of
+[07] around
+[08] 160
+[09] pence
+[10] widely
+[11] reported
+[12] before
+[13] announcement
+[14] of
+[15] the
+[16] deal
+[17] ,
+[18] and
+[19] will
+[20] reduce
+[21] outstanding
+[22] debt
+[23] of
+[24] 8.7
+[25] billion
+[26] pounds
+[27] (
+[28] $
+[29] 13.6
+[30] billion
+[31] )
+[32] by
+[33] 1.0
+[34] billion
+[35] (
+[36] $
+[37] 1.56
+[38] billion
+[39] )
+[40] .
+
+The company said a further 3.7 billion pounds ($5.8 billion) of debt would be converted into new financial instruments and existing shareholders would be able to participate in this issue.
+[00] The
+[01] company
+[02] said
+[03] a
+[04] further
+[05] 3.7
+[06] billion
+[07] pounds
+[08] (
+[09] $
+[10] 5.8
+[11] billion
+[12] )
+[13] of
+[14] debt
+[15] would
+[16] be
+[17] converted
+[18] into
+[19] new
+[20] financial
+[21] instruments
+[22] and
+[23] existing
+[24] shareholders
+[25] would
+[26] be
+[27] able
+[28] to
+[29] participate
+[30] in
+[31] this
+[32] issue
+[33] .
+
+If they choose not to take up free warrants entitling them to subscribe to this, Eurotunnel said shareholders' interests may be reduced further to just over 39 percent of the company by the end of December 2003.
+[00] If
+[01] they
+[02] choose
+[03] not
+[04] to
+[05] take
+[06] up
+[07] free
+[08] warrants
+[09] entitling
+[10] them
+[11] to
+[12] subscribe
+[13] to
+[14] this
+[15] ,
+[16] Eurotunnel
+[17] said
+[18] shareholders
+[19] '
+[20] interests
+[21] may
+[22] be
+[23] reduced
+[24] further
+[25] to
+[26] just
+[27] over
+[28] 39
+[29] percent
+[30] of
+[31] the
+[32] company
+[33] by
+[34] the
+[35] end
+[36] of
+[37] December
+[38] 2003
+[39] .
+
+Eurotunnel's shares, which were suspended last week at 113.5 pence ahead of Monday's announcement, should resume trading on Tuesday, the company said.
+[00] Eurotunnel
+[01] 's
+[02] shares
+[03] ,
+[04] which
+[05] were
+[06] suspended
+[07] last
+[08] week
+[09] at
+[10] 113.5
+[11] pence
+[12] ahead
+[13] of
+[14] Monday
+[15] 's
+[16] announcement
+[17] ,
+[18] should
+[19] resume
+[20] trading
+[21] on
+[22] Tuesday
+[23] ,
+[24] the
+[25] company
+[26] said
+[27] .
+
+
+-----
+Parts of speech (POS)
+
+
+
+Anglo-French Channel Tunnel operator Eurotunnel Monday announced a deal giving its creditor banks 45.5 percent of the company in return for wiping out one billion pounds ($1.56 billion) of its debt.
+
+[00] Anglo-French    JJ
+[01] Channel         NNP
+[02] Tunnel          NNP
+[03] operator        NN
+[04] Eurotunnel      NNP
+[05] Monday          NNP
+[06] announced       VBD
+[07] a               DT
+[08] deal            NN
+[09] giving          VBG
+[10] its             PRP$
+[11] creditor        NN
+[12] banks           NNS
+[13] 45.5            CD
+[14] percent         NN
+[15] of              IN
+[16] the             DT
+[17] company         NN
+[18] in              IN
+[19] return          NN
+[20] for             IN
+[21] wiping          VBG
+[22] out             RP
+[23] one             CD
+[24] billion         CD
+[25] pounds          NNS
+[26] (               -LRB-
+[27] $               $
+[28] 1.56            CD
+[29] billion         CD
+[30] )               -RRB-
+[31] of              IN
+[32] its             PRP$
+[33] debt            NN
+[34] .               .
+
+The long-awaited restructuring brings to an end months of wrangling between Eurotunnel and the 225 banks to which it owes nearly nine billion pounds ($14.1 billion).
+
+[00] The             DT
+[01] long-awaited    JJ
+[02] restructuring   NN
+[03] brings          VBZ
+[04] to              TO
+[05] an              DT
+[06] end             NN
+[07] months          NNS
+[08] of              IN
+[09] wrangling       VBG
+[10] between         IN
+[11] Eurotunnel      NNP
+[12] and             CC
+[13] the             DT
+[14] 225             CD
+[15] banks           NNS
+[16] to              TO
+[17] which           WDT
+[18] it              PRP
+[19] owes            VBZ
+[20] nearly          RB
+[21] nine            CD
+[22] billion         CD
+[23] pounds          NNS
+[24] (               -LRB-
+[25] $               $
+[26] 14.1            CD
+[27] billion         CD
+[28] )               -RRB-
+[29] .               .
+
+The deal, announced simultaneously in Paris and London, brings the company back from the brink of insolvency but leaves shareholders owning only 54.5 percent of the company.
+
+[00] The             DT
+[01] deal            NN
+[02] ,               ,
+[03] announced       VBD
+[04] simultaneously  RB
+[05] in              IN
+[06] Paris           NNP
+[07] and             CC
+[08] London          NNP
+[09] ,               ,
+[10] brings          VBZ
+[11] the             DT
+[12] company         NN
+[13] back            RB
+[14] from            IN
+[15] the             DT
+[16] brink           NN
+[17] of              IN
+[18] insolvency      NN
+[19] but             CC
+[20] leaves          VBZ
+[21] shareholders    NNS
+[22] owning          VBG
+[23] only            RB
+[24] 54.5            CD
+[25] percent         NN
+[26] of              IN
+[27] the             DT
+[28] company         NN
+[29] .               .
+
+"The restructuring plan provides Eurotunnel with the medium-term financial stability to allow it to consolidate its substantial commercial achievements to date and to develop its operations," Eurotunnel co-chairman Alastair Morton said.
+
+[00] "               ``
+[01] The             DT
+[02] restructuring   NN
+[03] plan            NN
+[04] provides        VBZ
+[05] Eurotunnel      NNP
+[06] with            IN
+[07] the             DT
+[08] medium-term     JJ
+[09] financial       JJ
+[10] stability       NN
+[11] to              TO
+[12] allow           VB
+[13] it              PRP
+[14] to              TO
+[15] consolidate     VB
+[16] its             PRP$
+[17] substantial     JJ
+[18] commercial      JJ
+[19] achievements    NNS
+[20] to              TO
+[21] date            NN
+[22] and             CC
+[23] to              TO
+[24] develop         VB
+[25] its             PRP$
+[26] operations      NNS
+[27] ,               ,
+[28] "               ''
+[29] Eurotunnel      NNP
+[30] co-chairman     NN
+[31] Alastair        NNP
+[32] Morton          NNP
+[33] said            VBD
+[34] .               .
+
+The firm was now making a profit before interest, he added.
+
+[00] The             DT
+[01] firm            NN
+[02] was             VBD
+[03] now             RB
+[04] making          VBG
+[05] a               DT
+[06] profit          NN
+[07] before          IN
+[08] interest        NN
+[09] ,               ,
+[10] he              PRP
+[11] added           VBD
+[12] .               .
+
+Although shareholders will see their interests diluted, they were offered the prospect of a brighter future after months of uncertainty while Eurotunnel wrestled to reduce crippling interest payments negotiated during the tunnel's construction.
+
+[00] Although        IN
+[01] shareholders    NNS
+[02] will            MD
+[03] see             VB
+[04] their           PRP$
+[05] interests       NNS
+[06] diluted         VBN
+[07] ,               ,
+[08] they            PRP
+[09] were            VBD
+[10] offered         VBN
+[11] the             DT
+[12] prospect        NN
+[13] of              IN
+[14] a               DT
+[15] brighter        JJR
+[16] future          NN
+[17] after           IN
+[18] months          NNS
+[19] of              IN
+[20] uncertainty     NN
+[21] while           IN
+[22] Eurotunnel      NNP
+[23] wrestled        VBD
+[24] to              TO
+[25] reduce          VB
+[26] crippling       JJ
+[27] interest        NN
+[28] payments        NNS
+[29] negotiated      VBD
+[30] during          IN
+[31] the             DT
+[32] tunnel          NN
+[33] 's              VBZ
+[34] construction    NN
+[35] .               .
+
+Eurotunnel, which has taken around half the cross-Channel market from the European ferry companies, said a strong operating performance could allow it to pay its first dividend within the next 10 years.
+
+[00] Eurotunnel      NNP
+[01] ,               ,
+[02] which           WDT
+[03] has             VBZ
+[04] taken           VBN
+[05] around          IN
+[06] half            PDT
+[07] the             DT
+[08] cross-Channel   NN
+[09] market          NN
+[10] from            IN
+[11] the             DT
+[12] European        JJ
+[13] ferry           NN
+[14] companies       NNS
+[15] ,               ,
+[16] said            VBD
+[17] a               DT
+[18] strong          JJ
+[19] operating       NN
+[20] performance     NN
+[21] could           MD
+[22] allow           VB
+[23] it              PRP
+[24] to              TO
+[25] pay             VB
+[26] its             PRP$
+[27] first           JJ
+[28] dividend        NN
+[29] within          IN
+[30] the             DT
+[31] next            JJ
+[32] 10              CD
+[33] years           NNS
+[34] .               .
+
+French co-chairman Patrick Ponsolle said shareholders would have to be patient before they could reap the benefits of the company's success.
+
+[00] French          JJ
+[01] co-chairman     NN
+[02] Patrick         NNP
+[03] Ponsolle        NNP
+[04] said            VBD
+[05] shareholders    NNS
+[06] would           MD
+[07] have            VB
+[08] to              TO
+[09] be              VB
+[10] patient         JJ
+[11] before          IN
+[12] they            PRP
+[13] could           MD
+[14] reap            VB
+[15] the             DT
+[16] benefits        NNS
+[17] of              IN
+[18] the             DT
+[19] company         NN
+[20] 's              POS
+[21] success         NN
+[22] .               .
+
+He called the debt restructuring plan "an acceptable compromise" for holders of Eurotunnel shares.
+
+[00] He              PRP
+[01] called          VBD
+[02] the             DT
+[03] debt            NN
+[04] restructuring   NN
+[05] plan            NN
+[06] "               ``
+[07] an              DT
+[08] acceptable      JJ
+[09] compromise      NN
+[10] "               ''
+[11] for             IN
+[12] holders         NNS
+[13] of              IN
+[14] Eurotunnel      NNP
+[15] shares          NNS
+[16] .               .
+
+The company said there was still considerable work to be done to finalise and agree on the details of the plan before it can be submitted to shareholders and the full 225 bank syndicate for approval, probably early in 1997.
+
+[00] The             DT
+[01] company         NN
+[02] said            VBD
+[03] there           EX
+[04] was             VBD
+[05] still           RB
+[06] considerable    JJ
+[07] work            NN
+[08] to              TO
+[09] be              VB
+[10] done            VBN
+[11] to              TO
+[12] finalise        VB
+[13] and             CC
+[14] agree           VB
+[15] on              IN
+[16] the             DT
+[17] details         NNS
+[18] of              IN
+[19] the             DT
+[20] plan            NN
+[21] before          IN
+[22] it              PRP
+[23] can             MD
+[24] be              VB
+[25] submitted       VBN
+[26] to              TO
+[27] shareholders    NNS
+[28] and             CC
+[29] the             DT
+[30] full            JJ
+[31] 225             CD
+[32] bank            NN
+[33] syndicate       NN
+[34] for             IN
+[35] approval        NN
+[36] ,               ,
+[37] probably        RB
+[38] early           RB
+[39] in              IN
+[40] 1997            CD
+[41] .               .
+
+Monday's announcement followed two weeks of highly secretive negotiations between Eurotunnel and its six leading banks.
+
+[00] Monday          NNP
+[01] 's              POS
+[02] announcement    NN
+[03] followed        VBD
+[04] two             CD
+[05] weeks           NNS
+[06] of              IN
+[07] highly          RB
+[08] secretive       JJ
+[09] negotiations    NNS
+[10] between         IN
+[11] Eurotunnel      NNP
+[12] and             CC
+[13] its             PRP$
+[14] six             CD
+[15] leading         JJ
+[16] banks           NNS
+[17] .               .
+
+This was extended to the 24 "instructing banks" at a meeting late last week in London.
+
+[00] This            DT
+[01] was             VBD
+[02] extended        VBN
+[03] to              TO
+[04] the             DT
+[05] 24              CD
+[06] "instructing    NN
+[07] banks           NNS
+[08] "               ''
+[09] at              IN
+[10] a               DT
+[11] meeting         NN
+[12] late            RB
+[13] last            JJ
+[14] week            NN
+[15] in              IN
+[16] London          NNP
+[17] .               .
+
+Eurotunnel said the debt-for-equity swap would be at 130 pence, or 10.40 francs, per share.
+
+[00] Eurotunnel      NNP
+[01] said            VBD
+[02] the             DT
+[03] debt-for-equity NN
+[04] swap            NN
+[05] would           MD
+[06] be              VB
+[07] at              IN
+[08] 130             CD
+[09] pence           NN
+[10] ,               ,
+[11] or              CC
+[12] 10.40           CD
+[13] francs          NNS
+[14] ,               ,
+[15] per             IN
+[16] share           NN
+[17] .               .
+
+That is considerably below the level of around 160 pence widely reported before announcement of the deal, and will reduce outstanding debt of 8.7 billion pounds ($13.6 billion) by 1.0 billion ($1.56 billion).
+
+[00] That            DT
+[01] is              VBZ
+[02] considerably    RB
+[03] below           IN
+[04] the             DT
+[05] level           NN
+[06] of              IN
+[07] around          IN
+[08] 160             CD
+[09] pence           NN
+[10] widely          RB
+[11] reported        VBN
+[12] before          IN
+[13] announcement    NN
+[14] of              IN
+[15] the             DT
+[16] deal            NN
+[17] ,               ,
+[18] and             CC
+[19] will            MD
+[20] reduce          VB
+[21] outstanding     JJ
+[22] debt            NN
+[23] of              IN
+[24] 8.7             CD
+[25] billion         CD
+[26] pounds          NNS
+[27] (               -LRB-
+[28] $               $
+[29] 13.6            CD
+[30] billion         CD
+[31] )               -RRB-
+[32] by              IN
+[33] 1.0             CD
+[34] billion         CD
+[35] (               -LRB-
+[36] $               $
+[37] 1.56            CD
+[38] billion         CD
+[39] )               -RRB-
+[40] .               .
+
+The company said a further 3.7 billion pounds ($5.8 billion) of debt would be converted into new financial instruments and existing shareholders would be able to participate in this issue.
+
+[00] The             DT
+[01] company         NN
+[02] said            VBD
+[03] a               DT
+[04] further         RB
+[05] 3.7             CD
+[06] billion         CD
+[07] pounds          NNS
+[08] (               -LRB-
+[09] $               $
+[10] 5.8             CD
+[11] billion         CD
+[12] )               -RRB-
+[13] of              IN
+[14] debt            NN
+[15] would           MD
+[16] be              VB
+[17] converted       VBN
+[18] into            IN
+[19] new             JJ
+[20] financial       JJ
+[21] instruments     NNS
+[22] and             CC
+[23] existing        VBG
+[24] shareholders    NNS
+[25] would           MD
+[26] be              VB
+[27] able            JJ
+[28] to              TO
+[29] participate     VB
+[30] in              IN
+[31] this            DT
+[32] issue           NN
+[33] .               .
+
+If they choose not to take up free warrants entitling them to subscribe to this, Eurotunnel said shareholders' interests may be reduced further to just over 39 percent of the company by the end of December 2003.
+
+[00] If              IN
+[01] they            PRP
+[02] choose          VBP
+[03] not             RB
+[04] to              TO
+[05] take            VB
+[06] up              RP
+[07] free            JJ
+[08] warrants        NNS
+[09] entitling       VBG
+[10] them            PRP
+[11] to              TO
+[12] subscribe       VB
+[13] to              TO
+[14] this            DT
+[15] ,               ,
+[16] Eurotunnel      NNP
+[17] said            VBD
+[18] shareholders    NNS
+[19] '               POS
+[20] interests       NNS
+[21] may             MD
+[22] be              VB
+[23] reduced         VBN
+[24] further         RB
+[25] to              TO
+[26] just            RB
+[27] over            IN
+[28] 39              CD
+[29] percent         NN
+[30] of              IN
+[31] the             DT
+[32] company         NN
+[33] by              IN
+[34] the             DT
+[35] end             NN
+[36] of              IN
+[37] December        NNP
+[38] 2003            CD
+[39] .               .
+
+Eurotunnel's shares, which were suspended last week at 113.5 pence ahead of Monday's announcement, should resume trading on Tuesday, the company said.
+
+[00] Eurotunnel      NNP
+[01] 's              POS
+[02] shares          NNS
+[03] ,               ,
+[04] which           WDT
+[05] were            VBD
+[06] suspended       VBN
+[07] last            JJ
+[08] week            NN
+[09] at              IN
+[10] 113.5           CD
+[11] pence           NNS
+[12] ahead           RB
+[13] of              IN
+[14] Monday          NNP
+[15] 's              POS
+[16] announcement    NN
+[17] ,               ,
+[18] should          MD
+[19] resume          VB
+[20] trading         VBG
+[21] on              IN
+[22] Tuesday         NNP
+[23] ,               ,
+[24] the             DT
+[25] company         NN
+[26] said            VBD
+[27] .               .
+
+
+-----
+Named entity detection
+
+
+Anglo-French Channel Tunnel operator Eurotunnel Monday announced a deal giving its creditor banks <PERCENTAGE> 45.5 percent </PERCENTAGE> of the company in return for wiping out one billion pounds ( <MONEY> $ 1.56 billion </MONEY> ) of its debt .
+
+The long-awaited restructuring brings to an end months of wrangling between Eurotunnel and the 225 banks to which it owes nearly nine billion pounds ( <MONEY> $ 14.1 billion </MONEY> ) .
+
+The deal , announced simultaneously in <LOCATION> Paris </LOCATION> and <LOCATION> London </LOCATION> , brings the company back from the brink of insolvency but leaves shareholders owning only <PERCENTAGE> 54.5 percent </PERCENTAGE> of the company .
+
+" The restructuring plan provides Eurotunnel with the medium-term financial stability to allow it to consolidate its substantial commercial achievements to date and to develop its operations , " Eurotunnel co-chairman <PERSON> Alastair Morton </PERSON> said .
+
+The firm was now making a profit before interest , he added .
+
+Although shareholders will see their interests diluted , they were offered the prospect of a brighter future after months of uncertainty while Eurotunnel wrestled to reduce crippling interest payments negotiated during the tunnel 's construction .
+
+Eurotunnel , which has taken around half the cross-Channel market from the European ferry companies , said a strong operating performance could allow it to pay its first dividend within the next 10 years .
+
+French co-chairman <PERSON> Patrick Ponsolle </PERSON> said shareholders would have to be patient before they could reap the benefits of the company 's success .
+
+He called the debt restructuring plan " an acceptable compromise " for holders of Eurotunnel shares .
+
+The company said there was still considerable work to be done to finalise and agree on the details of the plan before it can be submitted to shareholders and the full 225 bank syndicate for approval , probably early in 1997 .
+
+Monday 's announcement followed two weeks of highly secretive negotiations between Eurotunnel and its six leading banks .
+
+This was extended to the 24 "instructing banks " at a meeting late last week in <LOCATION> London </LOCATION> .
+
+Eurotunnel said the debt-for-equity swap would be at <MONEY> 130 pence </MONEY> , or <MONEY> 10.40 francs </MONEY> , per share .
+
+That is considerably below the level of around <MONEY> 160 pence </MONEY> widely reported before announcement of the deal , and will reduce outstanding debt of 8.7 billion pounds ( <MONEY> $ 13.6 billion </MONEY> ) by 1.0 billion ( <MONEY> $ 1.56 billion </MONEY> ) .
+
+The company said a further 3.7 billion pounds ( <MONEY> $ 5.8 billion </MONEY> ) of debt would be converted into new financial instruments and existing shareholders would be able to participate in this issue .
+
+If they choose not to take up free warrants entitling them to subscribe to this , Eurotunnel said shareholders ' interests may be reduced further to just over <PERCENTAGE> 39 percent </PERCENTAGE> of the company by the end of December 2003 .
+
+Eurotunnel 's shares , which were suspended last week at <MONEY> 113.5 pence </MONEY> ahead of Monday 's announcement , should resume trading on Tuesday , the company said .
+
