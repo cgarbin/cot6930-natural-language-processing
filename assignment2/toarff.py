@@ -19,7 +19,8 @@ def main():
     # Header
     print("@relation type\n")
     print(
-        "@attribute page_type {type_student,type_course,type_faculty,type_project}")
+        "@attribute page_type "
+        "{type_student,type_course,type_faculty,type_project}")
     print("@attribute text String")
     print("\n@data")
 
@@ -29,7 +30,8 @@ def main():
         for line in f:
             s = line.split()
             # Use prefix for type to avoid "Attribute names are not unique"
-            # error caused by having the attribute name also as part of the text.
+            # error caused by having the attribute name also as part of the
+            # document contents (the text).
             print("type_{}, '{}'".format(s[0], " ".join(s[1:])))
 
 
