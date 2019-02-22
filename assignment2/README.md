@@ -79,32 +79,57 @@ To execute the script:
 
     python3 toarff.py input-file.txt > output-file.arff
 
+At this point we have an ARFF file, ready to load in Weka.
+
 ### Inspecting the data
 
-In this section we will inspect the data. The goal is to check if there are
-problems with the data set that could affect training and evaluation.
+In this section we will inspect the data using Weka. The goals are to have a
+genreal understanding of the and to check if there are problems with the
+dataset that could affect training and evaluation.
 
-In this case we are looking for class imbalances within each data set and
-across them. Ideally
+A possible problem is class imbalance within each dataset (train and test) and
+across them. Ideally the classes should be balanced within and across the
+datasets.
+
+Starting with the train dataset, the steps to load and inspect in Weka:
+
+1. Choose the Exploer option
+2. Open the train dataset
+
+Weka shows the classes and the number of samples in each class.
+
+![Inspecting the train dataset](./pics/inspect-train-dataset.png)
+
+In the picture above we can see that the dataset is unbalanced. The `student`
+class has more samples than the other classes. This does not mean there is
+something wrong with the dataset, it may just be the nature of the underlying
+data. We just have to be aware of it and be prepared to deal with it.
+
+In this case, we should exepec to have more students since they outnumber
+faculty in real life by an order of magnitude or even more.
+
+Note that at this point the data shows only two piece of data, the class and
+the text. All words from the document are under "text". In the next step we
+will parse the document to extract words.
 
 #### Parsing the train data
 
-The first step to inspect the train data is to parse it to extract words and
-classes.
+In this step we will split the text into its individual tokes using Weka's
+`StringToWordVector` filter. Besides parsing the document into tokens, it will
+create the document-word matrix that classifiers need.
 
-This is done with Weka's `StringToWordVector` filter???
+This step is a continuation of the step above. At this point the file must be
+already loaded. We will add the filter and apply it to that file.
 
-Step 1: load the train data
+To apply filter:
 
-TODO: picture
+1. Choose the `StringToWordVector` filter
+1. Apply it
 
-Step 2: parse the data
+![Inspecting the train dataset](./pics/tokenize-train-dataset.png)
 
-TODO: picture
-
-#### Verifying class frequency in the train data
-
-TODO: check class frequence in both the train and test set.
+With the filter apply we can now see the words in the dcument. Weka also
+updates the number of attributes in the dataset.
 
 #### Parsing the test data
 
@@ -113,11 +138,7 @@ the test data.
 
 TODO: add picture
 
-#### Verifying class frequency in the test data
-
-TODO: add picture
-
-#### Analyzing the data
+### Analyzing the data
 
 The class frequency in the train and test data **\_\_\_\_**
 
