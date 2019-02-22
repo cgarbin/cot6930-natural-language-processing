@@ -20,7 +20,12 @@ Input data:
 > removing stop words and stemming. So you only need to count the word
 > frequency to generate a document-word matrix before you start classification.
 
-## Step 1 - Creating the Document-Word matrix
+## Step 1 - Preparing and inspecting the data
+
+In this step we will:
+
+1. Prepare the datasets to use it in Weka.
+1. Load the datasets and inspect them.
 
 ### Preprocessing the data
 
@@ -79,24 +84,25 @@ To execute the script:
 
     python3 toarff.py input-file.txt > output-file.arff
 
-At this point we have an ARFF file, ready to load in Weka.
+At this point we should have two ARFF files, one for the train dataset and one
+for the test data set, ready to load in Weka.
 
-### Inspecting the data
+### Inspecting the train dataset
 
-In this section we will inspect the data using Weka. The goals are to have a
-genreal understanding of the and to check if there are problems with the
-dataset that could affect training and evaluation.
+#### Loading the train dataset and checking class representations
+
+In this section we will inspect the train dataset using Weka. The goals are to
+have a general understanding of the datset and to check if there are problems
+with that could affect training and evaluation.
 
 A possible problem is class imbalance within each dataset (train and test) and
 across them. Ideally the classes should be balanced within and across the
 datasets.
 
-Starting with the train dataset, the steps to load and inspect in Weka:
+To load and inspect in Weka:
 
 1. Choose the Explorer option
 2. Open the train dataset
-
-Weka shows the classes and the number of samples in each class.
 
 ![Inspecting the train dataset](./pics/inspect-train-dataset.png)
 
@@ -105,14 +111,14 @@ class has more samples than the other classes. This does not mean there is
 something wrong with the dataset, it may be the nature of the underlying
 data. We just have to be aware of it and be prepared to deal with it.
 
-In this case, we should exepec to have more students since they outnumber
-faculty in real life by an order of magnitude or even more.
+In this case we should expect to have more students since they outnumber
+faculty in real life by an order of magnitude or more.
 
 Note that at this point the data shows only two pieces of data, the class and
 the text. All words from the document are under "text". In the next step we
 will parse the document to extract words.
 
-#### Parsing the train data
+#### Parsing the train dataset
 
 In this step we will split the text into its individual tokes using Weka's
 `StringToWordVector` filter. Besides parsing the document into tokens, it will
@@ -131,12 +137,14 @@ To apply filter:
 With the filter apply we can now see the words in the document. Weka also
 updates the number of attributes in the dataset.
 
-#### Parsing the test data
+### Inspecting the test dataset
 
 In this step we will repeat what was done for the train data (above), now with
 the test data.
 
-TODO: add picture
+#### Loading the test dataset and checking class representations
+
+#### Parsing the test dataset
 
 ### Analyzing the data
 
