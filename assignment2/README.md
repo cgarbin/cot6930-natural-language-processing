@@ -102,7 +102,7 @@ Weka shows the classes and the number of samples in each class.
 
 In the picture above we can see that the dataset is unbalanced. The `student`
 class has more samples than the other classes. This does not mean there is
-something wrong with the dataset, it may just be the nature of the underlying
+something wrong with the dataset, it may be the nature of the underlying
 data. We just have to be aware of it and be prepared to deal with it.
 
 In this case, we should exepec to have more students since they outnumber
