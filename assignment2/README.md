@@ -93,7 +93,7 @@ datasets.
 
 Starting with the train dataset, the steps to load and inspect in Weka:
 
-1. Choose the Exploer option
+1. Choose the Explorer option
 2. Open the train dataset
 
 Weka shows the classes and the number of samples in each class.
@@ -108,7 +108,7 @@ data. We just have to be aware of it and be prepared to deal with it.
 In this case, we should exepec to have more students since they outnumber
 faculty in real life by an order of magnitude or even more.
 
-Note that at this point the data shows only two piece of data, the class and
+Note that at this point the data shows only two pieces of data, the class and
 the text. All words from the document are under "text". In the next step we
 will parse the document to extract words.
 
@@ -128,7 +128,7 @@ To apply filter:
 
 ![Inspecting the train dataset](./pics/tokenize-train-dataset.png)
 
-With the filter apply we can now see the words in the dcument. Weka also
+With the filter apply we can now see the words in the document. Weka also
 updates the number of attributes in the dataset.
 
 #### Parsing the test data
