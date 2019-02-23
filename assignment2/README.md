@@ -155,12 +155,45 @@ The document-word matrix ([or document-term matrix](https://en.wikipedia.org/wik
 shows the frequency of words in each document (in our example, the frequency of
 words in each line, since each line represents a document).
 
+To create the matrix we need to:
+
+1. Load the dataset
+1. Apply the `StringToWordVector` filter with the `outputWordCounts` parameter
+   set to `True`
+
+Starting with loading the dataset.
+
+![Document-term matrix test dataset](./pics/document-term-matrix-load-dataset.png)
+
+Now that the dataset is loaded we apply the `StringToWordVector` filter with
+the attribute `outputWordCounts` set to `True`. When this attrbiubte is not set
+we get a binary value (present/not present) only.
+
+First we set the filter.
+
+![Document-term matrix test dataset](./pics/document-term-matrix-set-filter.png)
+
+Then we configure the parameters we need and apply the filter. To configure the
+filter, click anywhere in the white textbox with the filter name and its
+parameters to bring up the configuration window for that filter. Once
+configured, click on `Apply`.
+
+![Document-term matrix test dataset](./pics/document-term-matrix-configure-and-apply-filter.png)
+
+**IMPORTANT:** Weka applies a filter on the current state of the dataset. If
+you apply a filter, then change its configuration and apply it again, it will
+not apply to the original dataset. It will apply on top of the results from the
+last filter used. If you want to apply to the original dataset, either reload
+the dataset or press the `Undo` button until the dataset is restored to its
+original state.
+
 Weka creates the matrix once the document is parsed. To see the table, press
 the `Edit` button.
 
-![Document-term matrix test dataset](./pics/document-term-test-dataset.png)
+![Document-term matrix test dataset](./pics/document-term-matrix-result.png)
 
-In the first line of the matrix we see the first line of the document:
+The numbers are the count of words in each document (each line of the test
+file).
 
 ## Step 6 - Classifying and fine-tuning with a Naive Bayes classifier
 
