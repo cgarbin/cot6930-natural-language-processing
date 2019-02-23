@@ -290,7 +290,7 @@ We get a slightly higher accuracy when we keep more words:
 
 However, the confusion table shows that some of the classes got somewhat
 worse. The `student` and `course` classes improved, but `faculty` and `project`
-got slightly worse.
+have fewer instances correctly classified.
 
        a   b   c   d   <-- classified as
      994  15  58  30 |   a = type_student
@@ -315,11 +315,56 @@ most predictive power.
 
 ![Naive Bayes select attributes](./pics/naive-bayes-select-attributes.png)
 
-TODO: select attributes with AttributeSelection - DO NOT use test data, must
-use cross-validation at this stage.
+We will now use only these attributes with the classifier.
 
-See note in https://stackoverflow.com/questions/19192823/words-to-keep-attribute-in-stringtowordvector-filter-in-weka
-that attribute selection should be used for supervised problem - which is the case here.
+The first step is to remove all attributes that are not part of the selected
+attributes list.
+
+Since we will reduce the number of attributes by a large amount, we need to be
+extra careful that we are selecting the correct attributes to keep. Even one
+mistake in this step will significantly change the results.
+
+To make the removal of attributes easier, we will first select the ones to keep
+then invert that selection. There are much fewer attributes to keep. Inverting
+the selection is faster than selecting the attributes to remove first.
+
+1. Go to the `Preprocess` tab
+1. Select the class atrtibute, the very first one in the list. It is not part
+   of the selected attribute list, but we need it to perform the classification.
+1. Select each attribute in the list. Use the attribute numbers to help
+   select them.
+1. Click on `Invert` and `Apply` (in the filter line).
+
+At this point we should be left with the number of attributes selected, plus
+one for the class attribute. Check that the number matches what we expect.
+
+![Naive Bayes remove attributes](./pics/naive-bayes-attribute-removal.png)
+
+Now we can run the classifer again. Check that it is configured correctly and
+click on `Start`.
+
+![Naive Bayes classify again](./pics/naive-bayes-classify-again.png)
+
+This version has a significantly better accuracy.
+
+    Correctly Classified Instances        2386               85.1231 %
+    Incorrectly Classified Instances       417               14.8769 %
+
+The confusion matrix shows that some classes improved, while other are worse.
+However, the improvements outweight the new errors by a good margin, bringing
+the overall accuracy up.
+
+       a   b   c   d   <-- classified as
+     967  24  65  41 |   a = type_student
+      36 564  11   9 |   b = type_course
+      80  12 627  31 |   c = type_faculty
+      61   4  43 228 |   d = type_project
+
+### Verifying the naive Bayes classifier on the test set
+
+The final verification of the classifier is on the test set. This will tell
+us how well the classifier generalizes, i.e. how well it performs on unseen
+data.
 
 ## Step 7 - Classifying and fine-tuning with an SVM classifier
 
