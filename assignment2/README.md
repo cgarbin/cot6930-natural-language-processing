@@ -87,8 +87,6 @@ for the test data set, ready to load in Weka.
 
 ## Step 2 - Inspecting the train dataset
 
-### Loading the train dataset and checking class representations
-
 In this section we will inspect the train dataset using Weka. The goals are to
 have a general understanding of the datset and to check if there are problems
 with that could affect training and evaluation.
@@ -105,55 +103,27 @@ To load and inspect in Weka:
 ![Inspecting the train dataset](./pics/inspect-train-dataset.png)
 
 In the picture above we can see that the dataset is imbalanced. The `student`
-class has more samples than the other classes. This does not mean there is
-something wrong with the dataset, it may be the nature of the underlying
-data. We just have to be aware of it and be prepared to deal with it.
-
-In this case we should expect to have more students since they outnumber
-faculty in real life by an order of magnitude or more.
+class has more samples than the other classes. In this case we should expect
+to have more students since they outnumber faculty in real life by an order of
+magnitude or more. This imbalance within the dataset is not a problem in this
+case.
 
 Note that at this point the data shows only two pieces of data, the class and
-the text. All words from the document are under "text". In the next step we
+the text. All words from the document are under "text". In a later step we
 will parse the document to extract words.
-
-### Parsing the train dataset
-
-In this step we will split the text into its individual tokes using Weka's
-`StringToWordVector` filter. Besides parsing the document into tokens, it will
-create the document-word matrix that classifiers need.
-
-This step is a continuation of the step above. At this point the file must be
-already loaded. We will add the filter and apply it to that file.
-
-To apply filter:
-
-1. Choose the `StringToWordVector` filter
-1. Apply it
-
-![Tokenizing the train dataset](./pics/tokenize-train-dataset.png)
-
-With the filter applied we can now see the words in the document. Weka also
-updates the number of attributes in the dataset.
 
 ## Step 3 - Inspecting the test dataset
 
 In this step we will repeat what was done for the train data (above), now with
 the test data.
 
-### Loading the test dataset and checking class representations
-
 Following the same steps to start the Explorer and open the file results in
 the picture below.
 
 ![Inspecting the test dataset](./pics/inspect-test-dataset.png)
 
-As in the train dataset, the test dataset is also imbalanced. This may or may
-not be a problem. The analysis section below covers that.
-
-### Parsing the test dataset
-
-At this point we do not need to parse the test dataset. All we need is the
-class representation that we created in the previous step.
+As in the train dataset, the test dataset is also imbalanced, but it is also
+expected, for the same reasons dicussed for the train dataset.
 
 ## Step 4 - Analyzing the datasets
 
@@ -164,7 +134,7 @@ magnitude.
 
 More important is a possible imbalance across the datasets. The train and test
 datasets must have the same proportion of classes or the accuracy tests will
-not give a true measure of the model.
+not give a true measure of the model's accuracy with real-life data.
 
 Checking the proportion of classes across the datasets:
 
@@ -176,8 +146,8 @@ Checking the proportion of classes across the datasets:
 | 336/2083 = 12%  | 168/1396 = 12% |
 
 The table shows that classes are equally represented in the train and test
-datasets. Therefore we can use the test dataset to perform accuracy checks on
-the models trained with the test dataset.
+datasets. Therefore we have a representative test dataset, one that will give
+us confidence in the model evaluation.
 
 ## Step 5 - Creating the train dataset document-word matrix
 
