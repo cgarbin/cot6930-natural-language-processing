@@ -20,7 +20,7 @@ Input data:
 > removing stop words and stemming. So you only need to count the word
 > frequency to generate a document-word matrix before you start classification.
 
-## Step 1 - Preparing and inspecting the data
+## Step 1 - Preprocessing the data
 
 In this step we will:
 
@@ -159,7 +159,7 @@ class representation that we created in the previous step.
 
 ### Analyzing the data
 
-The imbalance within each dataset is not a concernt in this case. The classes
+The imbalance within each dataset is not a concern in this case. The classes
 are imbalanced within each dataset because of the nature of the data. A
 university has more students than any other class, likely by an order of
 magnitude.
@@ -181,15 +181,24 @@ The table shows that classes are equally represented in the train and test
 datasets. Therefore we can use the test dataset to perform accuracy checks on
 the models trained with the test dataset.
 
-### Creating the document-word matrix
+## Step 3 - Creating the train dataset document-word matrix
 
-## Step 2 - Classifying
+The document-word matrix ([or document-term matrix](https://en.wikipedia.org/wiki/Document-term_matrix))
+shows the frequency of words in each document (in our example, the frequency of
+words in each line, since each line represents a document).
 
-### Classifying with the Naive Bayes classifier
+Weka creates the matrix once the document is parsed. To see the table, press
+the `Edit` button.
 
-### Classifying with the SVM classifier
+![Document-term matrix test dataset](./pics/document-term-test-dataset.png)
 
-## Step 3 - Fine-tuning the classifiers
+In the first line of the matrix we see the first line of the document:
+
+## Step 4 - Classifying and fine-tuning with a Naive Bayes classifier
+
+### Classifying with a Naive Bayes classifier
+
+### Fine-tuning a Naive Bayes classifier
 
 In this section we will attempt to improve the performance of the classifiers
 by fine-tuning applicable parameters.
@@ -227,7 +236,13 @@ use cross-validation at this stage.
 See note in https://stackoverflow.com/questions/19192823/words-to-keep-attribute-in-stringtowordvector-filter-in-weka
 that attribute selection should be used for supervised problem - which is the case here.
 
-## Step 4 - Reporting the fine-tuned classifier
+## Step 5 - Classifying and fine-tuning with an SVM classifier
+
+### Classifying with the SVM classifier
+
+### Fine-tuning an SVM classifier
+
+## Step 6 - Reporting the fine-tuned classifier
 
 TODO: final results using test data
 
