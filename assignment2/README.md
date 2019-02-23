@@ -199,7 +199,7 @@ If you have not loaded a test dataset yet, please follow the instructions
 
 We will use a multinomial naive Bayes classifier because it "is the event
 model typically used for document classification, with events representing the
-occurrence of a word in a single document" ((source)[https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Multinomial_naive_Bayes]).
+occurrence of a word in a single document" ([source](https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Multinomial_naive_Bayes)).
 
 1. Choose the `NaivesBayesMultinomial` classifier.
 1. Select cross-validation.
