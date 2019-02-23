@@ -37,23 +37,19 @@ first word in each line is the document class, followed by tab, then followed
 by the document. The document is already tokenized and stemmed, each word
 separated by a space. Stop words have already been removed.
 
-```
-student	brian comput scienc depart ... advisor david wood tabl content  ...
-faculty	russel ... california san diego jolla offic appli physic mathemat ...
-```
+    student	brian comput scienc depart ... advisor david wood tabl content  ...
+    faculty	russel ... california san diego jolla offic appli physic mathemat ...
 
 The transformed file looks like this:
 
-```
-@relation type
+    @relation type
 
-@attribute page_type {type_student,type_course,type_faculty,type_project}
-@attribute text String
+    @attribute page_type {type_student,type_course,type_faculty,type_project}
+    @attribute text String
 
-@data
-type_student, 'brian comput scienc depart ... advisor david wood tabl ...'
-type_faculty, 'russel ... california san diego jolla offic appli physic ...'
-```
+    @data
+    type_student, 'brian comput scienc depart ... advisor david wood tabl ...'
+    type_faculty, 'russel ... california san diego jolla offic appli physic ...'
 
 The notable features of the new format are:
 
