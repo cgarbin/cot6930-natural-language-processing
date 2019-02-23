@@ -106,7 +106,7 @@ To load and inspect in Weka:
 
 ![Inspecting the train dataset](./pics/inspect-train-dataset.png)
 
-In the picture above we can see that the dataset is unbalanced. The `student`
+In the picture above we can see that the dataset is imbalanced. The `student`
 class has more samples than the other classes. This does not mean there is
 something wrong with the dataset, it may be the nature of the underlying
 data. We just have to be aware of it and be prepared to deal with it.
@@ -149,7 +149,7 @@ the picture below.
 
 ![Inspecting the test dataset](./pics/inspect-test-dataset.png)
 
-As in the train dataset, the test dataset is also unbalanced. This may or may
+As in the train dataset, the test dataset is also imbalanced. This may or may
 not be a problem. The analysis section below covers that.
 
 #### Parsing the test dataset
@@ -159,7 +159,27 @@ class representation that we created in the previous step.
 
 ### Analyzing the data
 
-The class frequency in the train and test data **\_\_\_\_**
+The imbalance within each dataset is not a concernt in this case. The classes
+are imbalanced within each dataset because of the nature of the data. A
+university has more students than any other class, likely by an order of
+magnitude.
+
+More important is a possible imbalance across the datasets. The train and test
+datasets must have the same proportion of classes or the accuracy tests will
+not give a true measure of the model.
+
+Checking the proportion of classes across the datasets:
+
+| Train dataset   | Test dataset   |
+| --------------- | -------------- |
+| 1097/2083 = 39% | 544/1396 = 39% |
+| 620/2083 = 22%  | 310/1396 = 22% |
+| 750/2083 = 27%  | 374/1396 = 27% |
+| 336/2083 = 12%  | 168/1396 = 12% |
+
+The table shows that classes are equally represented in the train and test
+datasets. Therefore we can use the test dataset to perform accuracy checks on
+the models trained with the test dataset.
 
 ### Creating the document-word matrix
 
