@@ -254,9 +254,8 @@ it is explained that the number of words is kept per class:
 > 1000odd attributes, instead of exactly 1000
 
 Since the corpus in this exercise is not large and we have a class definition,
-it appears that 1,000 words per class (as explained above) would suffice.
-
-To verify that we will double the number of words to keep and try the
+it appears that 1,000 words per class (as explained above) would suffice. To
+verify that we will double the number of words to keep and try the
 classifiers again.
 
 First we will change the filter, then run the classifier again.
@@ -281,6 +280,8 @@ on `Apply`.
 With the new filter is applied we can run the classifier again. Back to the
 `Classify` tab, check that the correct parameters are set, then click on
 `Start` to run the classifier.
+
+![Naive Bayes classify again](./pics/naive-bayes-classify-again.png)
 
 We get a slightly higher accuracy when we keep more words:
 
