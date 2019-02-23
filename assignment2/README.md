@@ -163,7 +163,7 @@ To create the matrix we need to:
 
 Starting with loading the dataset.
 
-![Document-term matrix test dataset](./pics/document-term-matrix-load-dataset.png)
+![Document-term matrix load dataset](./pics/document-term-matrix-load-dataset.png)
 
 Now that the dataset is loaded we apply the `StringToWordVector` filter with
 the attribute `outputWordCounts` set to `True`. When this attribute is not set
@@ -171,14 +171,14 @@ we get a binary value (present/not present) only.
 
 First we set the filter.
 
-![Document-term matrix test dataset](./pics/document-term-matrix-set-filter.png)
+![Document-term matrix set filter](./pics/document-term-matrix-set-filter.png)
 
 Then we configure the parameters we need and apply the filter. To configure the
 filter, click anywhere in the white textbox with the filter name and its
 parameters to bring up the configuration window for that filter. Once
 configured, click on `Apply`.
 
-![Document-term matrix test dataset](./pics/document-term-matrix-configure-apply-filter.png)
+![Document-term matrix apply filter](./pics/document-term-matrix-configure-apply-filter.png)
 
 **IMPORTANT:** Weka applies a filter on the current state of the dataset. If
 you apply a filter, then change its configuration and apply it again, it will
@@ -195,7 +195,39 @@ line of the test file in our case).
 
 ## Step 6 - Classifying and fine-tuning with a Naive Bayes classifier
 
+The starting point for this section is the a loaded and filtered test dataset.
+If you have not loaded a test dataset yet, please follow the instructions
+[in this section](#step-5---creating-the-train-dataset-document-word-matrix).
+
 ### Classifying with a Naive Bayes classifier
+
+We will use a multinomial naive Bayes classifier because it "is the event
+model typically used for document classification, with events representing the
+occurrence of a word in a single document" ((source)[https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Multinomial_naive_Bayes]).
+
+1. Choose the `NaivesBayesMultinomial` classifier.
+1. Select cross-validation.
+1. Select the `type` field (called `page_type` in Weka) as the attribute to
+   classify on.
+1. Click on the `Start` button.
+
+![Naive Bayes start](./pics/naive-bayes-start.png)
+
+This will result in about 81.8% accuracy:
+
+    Correctly Classified Instances        2292               81.7695 %
+    Incorrectly Classified Instances       511               18.2305 %
+
+From the confusion matrix we can see where the classifier is making mistakes:
+
+       a   b   c   d   <-- classified as
+     979  15  74  29 |   a = type_student
+      16 568  18  18 |   b = type_course
+     185   7 491  67 |   c = type_faculty
+      48   6  28 254 |   d = type_project
+
+The `faculty` class is a source of several errors. A significant amount of its
+documents are being classified as `student`.
 
 ### Fine-tuning a Naive Bayes classifier
 
