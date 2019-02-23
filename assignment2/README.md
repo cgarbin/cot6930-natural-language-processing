@@ -166,7 +166,7 @@ Starting with loading the dataset.
 ![Document-term matrix test dataset](./pics/document-term-matrix-load-dataset.png)
 
 Now that the dataset is loaded we apply the `StringToWordVector` filter with
-the attribute `outputWordCounts` set to `True`. When this attrbiubte is not set
+the attribute `outputWordCounts` set to `True`. When this attribute is not set
 we get a binary value (present/not present) only.
 
 First we set the filter.
@@ -178,7 +178,7 @@ filter, click anywhere in the white textbox with the filter name and its
 parameters to bring up the configuration window for that filter. Once
 configured, click on `Apply`.
 
-![Document-term matrix test dataset](./pics/document-term-matrix-configure-and-apply-filter.png)
+![Document-term matrix test dataset](./pics/document-term-matrix-configure-apply-filter.png)
 
 **IMPORTANT:** Weka applies a filter on the current state of the dataset. If
 you apply a filter, then change its configuration and apply it again, it will
@@ -188,12 +188,10 @@ the dataset or press the `Undo` button until the dataset is restored to its
 original state.
 
 Weka creates the matrix once the document is parsed. To see the table, press
-the `Edit` button.
+the `Edit` button. The numbers are the count of words in each document (each
+line of the test file in our case).
 
 ![Document-term matrix test dataset](./pics/document-term-matrix-result.png)
-
-The numbers are the count of words in each document (each line of the test
-file).
 
 ## Step 6 - Classifying and fine-tuning with a Naive Bayes classifier
 
