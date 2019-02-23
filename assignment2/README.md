@@ -132,9 +132,9 @@ To apply filter:
 1. Choose the `StringToWordVector` filter
 1. Apply it
 
-![Inspecting the train dataset](./pics/tokenize-train-dataset.png)
+![Tokenizing the train dataset](./pics/tokenize-train-dataset.png)
 
-With the filter apply we can now see the words in the document. Weka also
+With the filter applied we can now see the words in the document. Weka also
 updates the number of attributes in the dataset.
 
 ### Inspecting the test dataset
@@ -144,7 +144,18 @@ the test data.
 
 #### Loading the test dataset and checking class representations
 
+Following the same steps to start the Explorer and open the file results in
+the picture below.
+
+![Inspecting the test dataset](./pics/tokenize-test-dataset.png)
+
+As in the train dataset, the test dataset is also unbalanced. This may or may
+not be a problem. The analysis section below covers that.
+
 #### Parsing the test dataset
+
+At this point we do not need to parse the test dataset. All we need is the
+class representation that we created in the previous step.
 
 ### Analyzing the data
 
