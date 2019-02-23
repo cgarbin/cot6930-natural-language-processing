@@ -1,5 +1,9 @@
 # Assignment 2
 
+CTO-6930 Natural Language Processing, Spring 2019
+Assignment 2
+Christian Garbin
+
 Document classification using [Weka](https://www.cs.waikato.ac.nz/ml/weka/).
 
 ## Report summary
@@ -22,15 +26,8 @@ Input data:
 
 ## Step 1 - Preprocessing the data
 
-In this step we will:
-
-1. Prepare the datasets to use it in Weka.
-1. Load the datasets and inspect them.
-
-### Preprocessing the data
-
 The goal of the preprocessing step is to transform the data from its current
-format to a format that the tool expects.
+format to a format that the classification/analysis tool expects.
 
 In this case we need to transform the space-separated text file into an
 [ARFF](https://www.cs.waikato.ac.nz/ml/weka/arff.html) file.
@@ -39,8 +36,6 @@ Below is an example of the input file. Each line represents a document. The
 first word in each line is the document class, followed by tab, then followed
 by the document. The document is already tokenized and stemmed, each word
 separated by a space. Stop words have already been removed.
-
-TODO: add link to an overview of how to prepare a document - perhaps in appendix to not break the flow?
 
 ```
 student	brian comput scienc depart ... advisor david wood tabl content  ...
@@ -77,19 +72,22 @@ This is the error that Weka shows if we don't add the `type_` prefix:
 TODO: add example of this error.
 
 Although Weka has is capable of transforming data, we decided to transform the
-data using a Python script. The python script is shown in [this appendix
-section](#python-script-for-text-to-arff-transformation).
+data using a Python script, mainly because of familiarity with Python and how
+easy it is to perform these text transformations using it. The python script is
+shown in [this appendix section](#python-script-for-text-to-arff-transformation).
 
 To execute the script:
 
     python3 toarff.py input-file.txt > output-file.arff
 
+Run the script in the train and test dataset files.
+
 At this point we should have two ARFF files, one for the train dataset and one
 for the test data set, ready to load in Weka.
 
-### Inspecting the train dataset
+## Step 2 - Inspecting the train dataset
 
-#### Loading the train dataset and checking class representations
+### Loading the train dataset and checking class representations
 
 In this section we will inspect the train dataset using Weka. The goals are to
 have a general understanding of the datset and to check if there are problems
@@ -118,7 +116,7 @@ Note that at this point the data shows only two pieces of data, the class and
 the text. All words from the document are under "text". In the next step we
 will parse the document to extract words.
 
-#### Parsing the train dataset
+### Parsing the train dataset
 
 In this step we will split the text into its individual tokes using Weka's
 `StringToWordVector` filter. Besides parsing the document into tokens, it will
@@ -137,12 +135,12 @@ To apply filter:
 With the filter applied we can now see the words in the document. Weka also
 updates the number of attributes in the dataset.
 
-### Inspecting the test dataset
+## Step 3 - Inspecting the test dataset
 
 In this step we will repeat what was done for the train data (above), now with
 the test data.
 
-#### Loading the test dataset and checking class representations
+### Loading the test dataset and checking class representations
 
 Following the same steps to start the Explorer and open the file results in
 the picture below.
@@ -152,12 +150,12 @@ the picture below.
 As in the train dataset, the test dataset is also imbalanced. This may or may
 not be a problem. The analysis section below covers that.
 
-#### Parsing the test dataset
+### Parsing the test dataset
 
 At this point we do not need to parse the test dataset. All we need is the
 class representation that we created in the previous step.
 
-### Analyzing the data
+## Step 4 - Analyzing the datasets
 
 The imbalance within each dataset is not a concern in this case. The classes
 are imbalanced within each dataset because of the nature of the data. A
@@ -181,7 +179,7 @@ The table shows that classes are equally represented in the train and test
 datasets. Therefore we can use the test dataset to perform accuracy checks on
 the models trained with the test dataset.
 
-## Step 3 - Creating the train dataset document-word matrix
+## Step 5 - Creating the train dataset document-word matrix
 
 The document-word matrix ([or document-term matrix](https://en.wikipedia.org/wiki/Document-term_matrix))
 shows the frequency of words in each document (in our example, the frequency of
@@ -194,7 +192,7 @@ the `Edit` button.
 
 In the first line of the matrix we see the first line of the document:
 
-## Step 4 - Classifying and fine-tuning with a Naive Bayes classifier
+## Step 6 - Classifying and fine-tuning with a Naive Bayes classifier
 
 ### Classifying with a Naive Bayes classifier
 
@@ -236,13 +234,13 @@ use cross-validation at this stage.
 See note in https://stackoverflow.com/questions/19192823/words-to-keep-attribute-in-stringtowordvector-filter-in-weka
 that attribute selection should be used for supervised problem - which is the case here.
 
-## Step 5 - Classifying and fine-tuning with an SVM classifier
+## Step 7 - Classifying and fine-tuning with an SVM classifier
 
 ### Classifying with the SVM classifier
 
 ### Fine-tuning an SVM classifier
 
-## Step 6 - Reporting the fine-tuned classifier
+## Step 8 - Reporting the fine-tuned classifier
 
 TODO: final results using test data
 
