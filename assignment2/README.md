@@ -230,13 +230,19 @@ documents are being classified as `student`.
 In this section we will attempt to improve the performance of the classifiers
 by fine-tuning applicable parameters.
 
-An important concept in this section: all fine-tuning exercises are done on the
-training data, using cross-validation to check the improvements. We must not
-use the test data to for fine-tuning.
+An **important optimization concept**: all fine-tuning exercises are verified
+with cross-validation to check the improvements (or a validation set, but we
+do not have one in this case, so we fall back to cross-validation). We must
+not use the test data for fine-tuning. "Otherwise, the very real danger is that
+you may tune your hyperparameters to work well on the test set, but if you were
+to deploy your model you could see a significantly reduced performance."
+([source](http://cs231n.github.io/classification/#val) - see more details in
+that page).
 
 ### Choosing words to keep
 
-A key attribute of `StringToWordVector` is `-W`, the number of words to keep.
+A key attribute of `StringToWordVector` filter is `-W`, the number of words to
+keep.
 
 In [this discussion in Weka's forum](http://weka.8497.n7.nabble.com/StringToWordVector-W-option-td940.html)
 it is explained that the number of words is kept per class:
@@ -253,9 +259,60 @@ it appears that 1,000 words per class (as explained above) would suffice.
 To verify that we will double the number of words to keep and try the
 classifiers again.
 
-TODO: pic setting the words to keep
+First we will change the filter, then run the classifier again.
+
+To change the filter we must first reset it (Weka applies filter on top of the
+current state of the dataset, not on its original state. Since we applied a
+filter for the previous step, we need to reset it).
+
+Go back to the `Preprocess` tab and lick on `Undo` button until the
+`Attributes` section shows only two entries, as we had when we loaded the
+dataset. This action resets all filters.
+
+![Naive Bayes reset filter](./pics/naive-bayes-reset-filter.png)
+
+Once the filter is reset, we can change it to keep 2,000 words. Click anywhere
+in the white textbox with the filter name and its parameters to bring up the
+configuration window for that filter. Change `wordsToKeep` to 2000 and click
+on `Apply`.
+
+![Naive Bayes keep 2,000 words](./pics/naive-bayes-words-to-keep.png)
+
+With the new filter is applied we can run the classifier again. Back to the
+`Classify` tab, check that the correct parameters are set, then click on
+`Start` to run the classifier.
+
+We get a slightly higher accuracy when we keep more words:
+
+    Correctly Classified Instances        2310               82.4117 %
+    Incorrectly Classified Instances       493               17.5883 %
+
+However, the confusion table shows that some of the classes got somewhat
+worse. The `student` and `course` classes improved, but `faculty` and `project`
+got slightly worse.
+
+       a   b   c   d   <-- classified as
+     994  15  58  30 |   a = type_student
+      12 576  16  16 |   b = type_course
+     180   9 487  74 |   c = type_faculty
+      49   6  28 253 |   d = type_project
+
+Adding more words will likely continue this trend of improving some classes,
+but making others worse. We will now switch to another optimization technique.
 
 ### Selecting attributes
+
+Some attribute (words in the document) carry more information than others, i.e.
+they are more predictive than others.
+
+We will use Weka's attribute selection feature to find these attributes and use
+them to attempt to improve the classifier.
+
+Go to the `Select attribute` tab, select the `type` attribute and click on
+`start` to get a list of selected attributes. These are the attributes with the
+most predictive power.
+
+![Naive Bayes select attributes](./pics/naive-bayes-select-attributes.png)
 
 TODO: select attributes with AttributeSelection - DO NOT use test data, must
 use cross-validation at this stage.
