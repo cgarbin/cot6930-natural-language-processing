@@ -147,7 +147,7 @@ the test data.
 Following the same steps to start the Explorer and open the file results in
 the picture below.
 
-![Inspecting the test dataset](./pics/tokenize-test-dataset.png)
+![Inspecting the test dataset](./pics/inspect-test-dataset.png)
 
 As in the train dataset, the test dataset is also unbalanced. This may or may
 not be a problem. The analysis section below covers that.
