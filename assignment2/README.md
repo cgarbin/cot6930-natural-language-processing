@@ -264,16 +264,20 @@ We will use a multinomial naive Bayes classifier because it "is the event
 model typically used for document classification, with events representing the
 occurrence of a word in a single document" ([source](https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Multinomial_naive_Bayes)).
 
-To apply the `StringToWordVector` filter before the classifier, we will use
-Weka's meta classifier `FilteredClassifier` in the `Classify` tab.
+As explained in the previous section, we will split the train dataset before
+we create the document-term matrix. To do that we need to apply the
+`StringToWordVector` filter before the classifier, using Weka's meta classifier
+`FilteredClassifier` in the `Classify` tab.
 
 ![Meta classifier - FilteredClassifier](./pics/meta-classifier-filteredclassifier.png)
 
 Click on any part of the `Classifier` textbox to bring up the configuration
 window. It has a field for `classifier` and a field for `filter`. Choose the
 `NaiveBayesMultinomial` for `classifier` and `StringToWordVector` for `filter`.
+Then click anywhere in `StringToWordVector` textbox to brig up its
+configuration window and choose `True` for `outputWordCounts`.
 
-![Meta classifier - FilteredClassifier](./pics/meta-classifer-configuration.png)
+![Meta classifier - FilteredClassifier](./pics/meta-classifier-configuration.png)
 
 Now we are ready to start the classification and cross-validation. Back in
 `Classify` tab:
