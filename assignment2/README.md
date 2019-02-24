@@ -229,24 +229,26 @@ process looks like this:
 ![Wrong way to cross-validate in Weka](./pics/weka-cross-validation-wrong.png)
 
 The separate preprocess step creates one document-term matrix from the complete
-train dataset. Once we split into the train and validation folds, the train
+train dataset. Once we split it into the train and validation folds, the train
 fold contains information on the complete train dataset, including information
 that will be part of the validation fold when we split the dataset for cross-
 validation. In other words, the classifier can "peek" into the validation data
 during training.
 
-The result of this extra information is that the validation step will produce
-numbers that are too optimistic. The classifier will look good during
-validation, but only because it was able to access too much information. When
-testing with the actual test dataset it will not perform as well as it should.
+The result is a validation step that produces optimistic results. The
+classifier will look good during validation, but only because it was able to
+access too much information. When testing with the actual test dataset it will
+not perform as well.
 
 What kind of information are we sharing that we should not? Any information
 that is created using the entire dataset. The typical example is tf-idf. It
-uses the number of documents as part of its formula. In other cases, when we
-do not use the entire dataset for calculation we may get away with creating
-the document-term matrix with the complete train dataset. However, starting
-with splitting the train dataset first, then creating the separate document-
-termn matrix is a better practice that will avoid errors down the road.
+uses the number of documents as part of its formula.
+
+In other cases, when we do not use the entire dataset for calculation we may
+get away with creating the document-term matrix with the complete train
+dataset. However, starting with splitting the train dataset first, then
+creating the separate document- termn matrix is a better practice that will
+avoid errors down the road, as we run more experiments.
 
 Applying filter and classification together looks like the picture below. The
 major difference in this case is that first we split the original dataset into
