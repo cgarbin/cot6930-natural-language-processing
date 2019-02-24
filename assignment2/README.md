@@ -87,9 +87,14 @@ In this section we will inspect the train dataset using Weka. The goals are to
 have a general understanding of the datset and to check if there are problems
 with that could affect training and evaluation.
 
-A possible problem is class imbalance within each dataset (train and test) and
-across them. Ideally the classes should be balanced within and across the
-datasets.
+A possible problem is class imbalance. Within a dataset each class should be
+as frequent as they are in the real data. For example, if class A is twice as
+frequent as class B in the real data, then the train and test data set should
+have twice as many samples of A than B. Across the datasets the class should
+have the same frequency. For example, if class A occurss twice as frequently
+as other classes in the train dataset, it should also occur twice as
+frequenlty in the test dataset. This is taken care of by balancing classes
+within the datasets.
 
 To load and inspect in Weka:
 
