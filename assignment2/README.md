@@ -169,8 +169,8 @@ First we set the filter.
 
 ![Document-term matrix set filter](./pics/document-term-matrix-set-filter.png)
 
-Then we configure the parameters we need and apply the filter. To configure the
-filter, click anywhere in the white textbox with the filter name and its
+After we configure the parameters we need and apply the filter. To configure
+the filter, click anywhere in the white textbox with the filter name and its
 parameters to bring up the configuration window for that filter. Once
 configured, click on `Apply`.
 
@@ -191,9 +191,65 @@ line of the test file in our case).
 
 ## Step 6 - Classifying and fine-tuning with a Naive Bayes classifier
 
-The starting point for this section is the a loaded and filtered test dataset.
-If you have not loaded a test dataset yet, please follow the instructions
-[in this section](#step-5---creating-the-train-dataset-document-word-matrix).
+Before starting the fine-tuning process we will review two concepts that guide
+that process.
+
+### Preserving the test dataset
+
+An **important optimization concept**: all fine-tuning exercises are verified
+with cross-validation to check the improvements (or a validation set, but we
+do not have one in this case, so we fall back to cross-validation).
+
+We must not use the test data for fine-tuning. It must be used only for the
+final validation of the tuned model. "Otherwise, the very real danger is that
+you may tune your hyperparameters to work well on the test set, but if you were
+to deploy your model you could see a significantly reduced performance."
+([source](http://cs231n.github.io/classification/#val) - see more details in
+that page).
+
+### Splitting the train dataset before creating document-term matrices
+
+Although we created a document-term matrix as a separate step above, using the
+`Preprocess` tab, when fine-tuning a classifier with cross-validation we need
+to apply the filters as part of the classification process itself, not as a
+separate step in the process.
+
+With cross-validation we split the train set into a train fold and a validation
+fold, train the classifier with the train fold, then check the results on the
+validation fold. These steps are repeated for the number of folds we chose.
+
+If we apply the filter as a separate preprocess step, the train/validate
+process looks like this:
+
+![Wrong way to cross-validate in Weka](./pics/weka-cross-validation-wrong.png)
+
+The separate preprocess step creates one document-term matrix from the complete
+train dataset. Once we split into the train and validation folds, the train
+fold contains information on the complete train dataset, including information
+that will be part of the validation fold when we split the dataset for cross-
+validation. In other words, the classifier can "peek" into the validation data
+during training.
+
+The result of this extra information is that the validation step will produce
+numbers that are too optimistic. The classifier will look good during
+validation, but only because it was able to access too much information. When
+testing with the actual test dataset it will not perform as well as it should.
+
+What kind of information are we sharing that we should not? Any information
+that is created using the entire dataset. The typical example is tf-idf. It
+uses the number of documents as part of its formula. In other cases, when we
+do not use the entire dataset for calculation we may get away with creating
+the document-term matrix with the complete train dataset. However, starting
+with splitting the train dataset first, then creating the separate document-
+termn matrix is a better practice that will avoid errors down the road.
+
+Applying filter and classification together looks like the picture below. The
+major difference in this case is that first we split the original dataset into
+a train and a validation fold, then create the document-term matrix for each
+of them separately. Now the classifier only "sees" data is that part of the
+train fold.
+
+![Correct way to cross-validate in Weka](./pics/weka-cross-validation-correct.png)
 
 ### Classifying with a Naive Bayes classifier
 
@@ -365,6 +421,11 @@ the overall accuracy up.
 The final verification of the classifier is on the test set. This will tell
 us how well the classifier generalizes, i.e. how well it performs on unseen
 data.
+
+Verifying with a dataset requires a different approach. So far we have used
+the filter in the `Preprocess` tab to prepare the dataset we use for training.
+However, to validate with a test dataset we need to load two datasets, the
+train dataset and the test dataset.
 
 ## Step 7 - Classifying and fine-tuning with an SVM classifier
 
