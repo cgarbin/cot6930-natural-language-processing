@@ -384,23 +384,23 @@ shows a `AllFilter` by default. We do not need it, so let's delete it.
 
 The first filter we need is the `StringToWordVector` to tokenize the document.
 
-![Add StringToWordVector](./pics/multifilter-delete-add-stringtowordvector.png)
+![Add StringToWordVector](./pics/multifilter-add-stringtowordvector.png)
 
 After tokenization we add `AttributeSelection`.
 
-![Add AttributeSelection](./pics/multifilter-delete-add-attributeselection.png)
+![Add AttributeSelection](./pics/multifilter-add-attributeselection.png)
 
-The final step is to change `StringToWordVector` to use 2000, as we used in
-the previous steps, then close the multifilter window by pressing on its X
-button (it doesn't have an `OK` or `Close`button).
+The final step is to change `StringToWordVector` to keep 2,000 words, as we
+did in the previous steps, then close the multifilter window by pressing on
+its X button (it doesn't have an `OK` or `Close`button).
 
-![Configure StringToWordVector](./pics/multifilter-delete-configure-stringtowordvector.png)
+![Configure StringToWordVector](./pics/multifilter-configure-stringtowordvector.png)
 
 With the multifilter in place we can run the classifer again.
 
 ![Naive Bayes start](./pics/meta-classifier-start.png)
 
-This time it will take considerable longer because of the extra step to perform
+This time it will take considerably longer because of the extra step to perform
 attribute selection.
 
 It results in better accuracy:
@@ -409,8 +409,8 @@ It results in better accuracy:
     Incorrectly Classified Instances       452               16.1256 %
 
 But inspecting the confusion matrix shows that the accuracy improvement is a
-result of significantly improving the `faculty` class, while at the same time
-making all other classes worse (the `project` class by a large margin).
+result of significantly improving the `faculty` class, while making all other
+classes worse (the `student` and `project` classes by a large margin).
 
 A comparison of the classifier with 2,000 words with and without attribute
 selection.
@@ -432,13 +432,14 @@ And this is the one from the section above:
       46   7  37 246 |   d = type_project
 
 Since attribute selection did not improve the overall accuracy by a large
-margin and at the same time made several classes worse off, we will use 2,000
-words without attribute selection as our best classifier.
+margin and at the same time made several classes worse off, we will use only
+`StringToWordVector` with 2,000 words as our best filter for the classifier.
 
 Remove attribute selection by changing the `filter` value back to
-`StringToWordVector` and set `wordsToKeep` to 2000.
+`StringToWordVector`, set `outputWordCounts` to true and set `wordsToKeep`
+to 2000.
 
-![Remove multifilter](./pics/multifilter-remove.png.png)
+![Remove multifilter](./pics/multifilter-remove.png)
 
 Run the classifier again to check if we are back to where we want it be.
 
