@@ -313,7 +313,7 @@ by fine-tuning applicable parameters.
 We still keep using cross-validation in this stage, not the test dataset, as
 explain [in this section](#preserving-the-test-dataset).
 
-### Choosing words to keep
+#### Choosing words to keep
 
 A key attribute of `StringToWordVector` filter is `-W`, the number of words to
 keep.
@@ -334,51 +334,34 @@ classifiers again.
 
 First we will change the filter, then run the classifier again.
 
-To change the filter we must first reset it (Weka applies filter on top of the
-current state of the dataset, not on its original state. Since we applied a
-filter for the previous step, we need to reset it).
+Click on the `FilteredClassifier` textbox, then on the `StringToWordVector`
+textbox, change `wordsToKeep` to 2000, click `OK` to save the changes.
 
-Go back to the `Preprocess` tab and lick on `Undo` button until the
-`Attributes` section shows only two entries, as we had when we loaded the
-dataset. This action resets all filters.
+![Naive Bayes reset filter](./pics/naive-bayes-change-words-to-keep.png)
 
-![Naive Bayes reset filter](./pics/naive-bayes-reset-filter.png)
+With the new filter is applied we can run the classifier again. Verify that it
+is configured correctly, then click on `Start` to run the classifier.
 
-Once the filter is reset, we can change it to keep 2,000 words. Click anywhere
-in the white textbox with the filter name and its parameters to bring up the
-configuration window for that filter. Change `wordsToKeep` to 2000 and click
-on `Apply`.
+![Naive Bayes start](./pics/meta-classifier-start.png)
 
-![Naive Bayes keep 2,000 words](./pics/naive-bayes-words-to-keep.png)
+It improved, but not by much.
 
-With the new filter is applied we can run the classifier again. Back to the
-`Classify` tab, check that the correct parameters are set, then click on
-`Start` to run the classifier.
+    Correctly Classified Instances        2325               82.9468 %
+    Incorrectly Classified Instances       478               17.0532 %
 
-![Naive Bayes classify again](./pics/naive-bayes-classify-again.png)
-
-We get a slightly higher accuracy when we keep more words.
-
-    Correctly Classified Instances        2310               82.4117 %
-    Incorrectly Classified Instances       493               17.5883 %
-
-However, the confusion table shows that some of the classes got somewhat
-worse. The `student` and `course` classes improved, but `faculty` and `project`
-have fewer instances correctly classified.
+The confusion matrix shows that accuray for each class (true positive)
+improved, with the excpetion of a decline for `project`.
 
        a   b   c   d   <-- classified as
-     994  15  58  30 |   a = type_student
-      12 576  16  16 |   b = type_course
-     180   9 487  74 |   c = type_faculty
-      49   6  28 253 |   d = type_project
+     994  14  61  28 |   a = type_student
+      12 579  15  14 |   b = type_course
+     165  10 506  69 |   c = type_faculty
+      46   7  37 246 |   d = type_project
 
-Adding more words will likely continue this trend of improving some classes,
-but making others worse. We will now switch to another optimization technique.
+#### Selecting attributes
 
-### Selecting attributes
-
-Some attribute (words in the document) carry more information than others, i.e.
-they are more predictive than others.
+Out of all 2,000 attributes (words in the document) we now have selected, some
+carry more information than others, i.e. they are more predictive than others.
 
 We will use Weka's attribute selection feature to find these attributes and use
 them to attempt to improve the classifier.
@@ -436,9 +419,12 @@ the overall accuracy up.
 
 ### Verifying the naive Bayes classifier on the test set
 
-The final verification of the classifier is on the test set. This will tell
-us how well the classifier generalizes, i.e. how well it performs on unseen
-data.
+Once we are done with fine-tuning we need to check how the classifier behaves
+on unseen data. That is an indication of how well (or not) it will peform in
+real life.
+
+This is where the test dataset comes in. It has been held back so far, to have
+a dataset that the classifer has never seen before.
 
 Verifying with a dataset requires a different approach. So far we have used
 the filter in the `Preprocess` tab to prepare the dataset we use for training.
