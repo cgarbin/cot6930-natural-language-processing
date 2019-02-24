@@ -363,7 +363,7 @@ we will keep using 2000 words.
 
 #### Selecting attributes
 
-Out of all 2,000 attributes (words in the documents) we now have selected, some
+Out of all 2000 attributes (words in the documents) we now have selected, some
 carry more information than others, i.e. they are more predictive than others.
 
 We will use Weka's attribute selection feature to find these attributes and use
@@ -377,12 +377,13 @@ First we change the current filter to `MultiFilter`.
 
 ![Add MultiFilter](./pics/multifilter-add.png)
 
-Now we add the filters, in the order we need them to be executed. `MultiFilter`
-shows a `AllFilter` by default. We do not need it, so let's delete it.
+`MultiFilter` shows a `AllFilter` by default. We do not need it. Let's delete
+it.
 
 ![Delete AllFilter](./pics/multifilter-delete-allfilter.png)
 
-The first filter we need is the `StringToWordVector` to tokenize the document.
+Now we add the filters, in the order we need them to be executed. The first
+filter we need is the `StringToWordVector` to tokenize the document.
 
 ![Add StringToWordVector](./pics/multifilter-add-stringtowordvector.png)
 
@@ -390,9 +391,9 @@ After tokenization we add `AttributeSelection`.
 
 ![Add AttributeSelection](./pics/multifilter-add-attributeselection.png)
 
-The final step is to change `StringToWordVector` to keep 2,000 words, as we
-did in the previous steps, then close the multifilter window by pressing on
-its X button (it doesn't have an `OK` or `Close`button).
+The final step is to change `StringToWordVector` to keep use word counts and
+to keep 2000 words, as we did in the previous steps, then close the multifilter
+window by pressing on its X button (it doesn't have an `OK` or `Close`button).
 
 ![Configure StringToWordVector](./pics/multifilter-configure-stringtowordvector.png)
 
@@ -403,25 +404,22 @@ With the multifilter in place we can run the classifer again.
 This time it will take considerably longer because of the extra step to perform
 attribute selection.
 
-It results in better accuracy:
+It results in significantly better accuracy:
 
-    Correctly Classified Instances        2351               83.8744 %
-    Incorrectly Classified Instances       452               16.1256 %
+    Correctly Classified Instances        2392               85.3371 %
+    Incorrectly Classified Instances       411               14.6629 %
 
-But inspecting the confusion matrix shows that the accuracy improvement is a
-result of significantly improving the `faculty` class, while making all other
-classes worse (the `student` and `project` classes by a large margin).
-
-A comparison of the classifier with 2,000 words with and without attribute
-selection.
+Inspecting the confusion matrix shows that the accuracy improvement is a
+result of a large improvment for the `faculty` class, while making all other
+classes slightly worse.
 
 This is the confusion matrix with attribute selection (what we just did):
 
        a   b   c   d   <-- classified as
-     948  35  87  27 |   a = type_student
-      32 574   4  10 |   b = type_course
-      91  17 602  40 |   c = type_faculty
-      97   8  57 174 |   d = type_project
+     972  19  68  38 |   a = type_student
+      36 567  11   6 |   b = type_course
+      78  12 627  33 |   c = type_faculty
+      62   5  43 226 |   d = type_project
 
 And this is the one from the section above:
 
@@ -431,22 +429,10 @@ And this is the one from the section above:
      165  10 506  69 |   c = type_faculty
       46   7  37 246 |   d = type_project
 
-Since attribute selection did not improve the overall accuracy by a large
-margin and at the same time made several classes worse off, we will use only
-`StringToWordVector` with 2,000 words as our best filter for the classifier.
+Given the overall accuracy improvement, without affecting the other class by
+a large margin, we will use this test as our final classifier.
 
-Remove attribute selection by changing the `filter` value back to
-`StringToWordVector`, set `outputWordCounts` to true and set `wordsToKeep`
-to 2000.
-
-![Remove multifilter](./pics/multifilter-remove.png)
-
-Run the classifier again to check if we are back to where we want it be.
-
-![Naive Bayes start](./pics/meta-classifier-start.png)
-
-We should see the accuracy and confusion table from the [section where we first
-changed to 2000 words to keep](#choosing-words-to-keep).
+The next step is to check the peformance in unseen data, using the test dataset.
 
 ### Verifying the naive Bayes classifier on the test set
 
