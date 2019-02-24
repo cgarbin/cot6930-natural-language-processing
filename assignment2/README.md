@@ -443,10 +443,51 @@ real life.
 This is where the test dataset comes in. It has been held back so far, to have
 a dataset that the classifer has never seen before.
 
-Verifying with a dataset requires a different approach. So far we have used
-the filter in the `Preprocess` tab to prepare the dataset we use for training.
-However, to validate with a test dataset we need to load two datasets, the
-train dataset and the test dataset.
+To evaluate with a test dataset change the test options to `Supplied test set`,
+load the dataset and configure the class attribute (the same we are using for
+training, the `type` attribute, or `page_type` in Weka).
+
+![Naive Bayes configuraton of test dataset evaluation](./pics//naive-bayes-test-dataset-evaluation-configuration.png)
+
+Once it is configured, verify that the test options are set correctly and start
+the test.
+
+![Naive Bayes test dataset evaluation](./pics//naive-bayes-test-dataset-evaluation-start.png)
+
+The result is a classification accuracy very close to the one achieved during
+training. Therefore we can say that the classifier generalizes well.
+
+    Correctly Classified Instances        1176               84.2407 %
+    Incorrectly Classified Instances       220               15.7593 %
+
+The confusion matrix shows that it behaves about the same as during the
+trianing phase (a good thing in this case).
+
+       a   b   c   d   <-- classified as
+     469  10  47  18 |   a = type_student
+      19 274   5  12 |   b = type_course
+      38   5 310  21 |   c = type_faculty
+      24   3  18 123 |   d = type_project
+
+Comparing the other metrics also confirms that the classifier generalized well.
+
+These are the metrics with the test dataset:
+
+                     TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                     0.862    0.095    0.853      0.862    0.857      0.766    0.952     0.914     type_student
+                     0.884    0.017    0.938      0.884    0.910      0.886    0.982     0.960     type_course
+                     0.829    0.068    0.816      0.829    0.822      0.757    0.938     0.890     type_faculty
+                     0.732    0.042    0.707      0.732    0.719      0.680    0.948     0.727     type_project
+    Weighted Avg.    0.842    0.064    0.844      0.842    0.843      0.780    0.954     0.895
+
+And these are the metrics for the training phase, with cross-validation:
+
+                     TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                     0.886    0.103    0.847      0.886    0.866      0.777    0.951     0.915     type_student
+                     0.915    0.016    0.940      0.915    0.927      0.907    0.985     0.963     type_course
+                     0.836    0.059    0.837      0.836    0.837      0.777    0.940     0.885     type_faculty
+                     0.673    0.031    0.746      0.673    0.707      0.671    0.932     0.733     type_project
+    Weighted Avg.    0.853    0.064    0.853      0.853    0.853      0.793    0.953     0.896
 
 ## Step 7 - Classifying and fine-tuning with an SVM classifier
 
