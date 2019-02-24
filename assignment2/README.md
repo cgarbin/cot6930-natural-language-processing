@@ -363,62 +363,89 @@ we will keep using 2000 words.
 
 #### Selecting attributes
 
-Out of all 2,000 attributes (words in the document) we now have selected, some
+Out of all 2,000 attributes (words in the documents) we now have selected, some
 carry more information than others, i.e. they are more predictive than others.
 
 We will use Weka's attribute selection feature to find these attributes and use
 them to attempt to improve the classifier.
 
-Go to the `Select attribute` tab, select the `type` attribute and click on
-`start` to get a list of selected attributes. These are the attributes with the
-most predictive power.
+To add attribute selection we have to chain filters. First we need the
+`StringToWordVector` used so far, then another filter to perform attribute
+selection. Chaining filters in Weka is done with `MultiFilter`.
 
-![Naive Bayes select attributes](./pics/naive-bayes-select-attributes.png)
+First we change the current filter to `MultiFilter`.
 
-We will now use only these attributes with the classifier.
+![Add MultiFilter](./pics/multifilter-add.png)
 
-The first step is to remove all attributes that are not part of the selected
-attributes list.
+Now we add the filters, in the order we need them to be executed. `MultiFilter`
+shows a `AllFilter` by default. We do not need it, so let's delete it.
 
-Since we will reduce the number of attributes by a large amount, we need to be
-extra careful that we are selecting the correct attributes to keep. Even one
-mistake in this step will significantly change the results.
+![Delete AllFilter](./pics/multifilter-delete-allfilter.png)
 
-To make the removal of attributes easier, we will first select the ones to keep
-then invert that selection. There are much fewer attributes to keep. Inverting
-the selection is faster than selecting the attributes to remove first.
+The first filter we need is the `StringToWordVector` to tokenize the document.
 
-1. Go to the `Preprocess` tab
-1. Select the class atrtibute, the very first one in the list. It is not part
-   of the selected attribute list, but we need it to perform the classification.
-1. Select each attribute in the list. Use the attribute numbers to help
-   select them.
-1. Click on `Invert` and `Apply` (in the filter line).
+![Add StringToWordVector](./pics/multifilter-delete-add-stringtowordvector.png)
 
-At this point we should be left with the number of attributes selected, plus
-one for the class attribute. Check that the number matches what we expect.
+After tokenization we add `AttributeSelection`.
 
-![Naive Bayes remove attributes](./pics/naive-bayes-attribute-removal.png)
+![Add AttributeSelection](./pics/multifilter-delete-add-attributeselection.png)
 
-Now we can run the classifer again. Check that it is configured correctly and
-click on `Start`.
+The final step is to change `StringToWordVector` to use 2000, as we used in
+the previous steps, then close the multifilter window by pressing on its X
+button (it doesn't have an `OK` or `Close`button).
 
-![Naive Bayes classify again](./pics/naive-bayes-classify-again.png)
+![Configure StringToWordVector](./pics/multifilter-delete-configure-stringtowordvector.png)
 
-This version has a significantly better accuracy.
+With the multifilter in place we can run the classifer again.
 
-    Correctly Classified Instances        2386               85.1231 %
-    Incorrectly Classified Instances       417               14.8769 %
+![Naive Bayes start](./pics/meta-classifier-start.png)
 
-The confusion matrix shows that some classes improved, while other are worse.
-However, the improvements outweight the new errors by a good margin, bringing
-the overall accuracy up.
+This time it will take considerable longer because of the extra step to perform
+attribute selection.
+
+It results in better accuracy:
+
+    Correctly Classified Instances        2351               83.8744 %
+    Incorrectly Classified Instances       452               16.1256 %
+
+But inspecting the confusion matrix shows that the accuracy improvement is a
+result of significantly improving the `faculty` class, while at the same time
+making all other classes worse (the `project` class by a large margin).
+
+A comparison of the classifier with 2,000 words with and without attribute
+selection.
+
+This is the confusion matrix with attribute selection (what we just did):
 
        a   b   c   d   <-- classified as
-     967  24  65  41 |   a = type_student
-      36 564  11   9 |   b = type_course
-      80  12 627  31 |   c = type_faculty
-      61   4  43 228 |   d = type_project
+     948  35  87  27 |   a = type_student
+      32 574   4  10 |   b = type_course
+      91  17 602  40 |   c = type_faculty
+      97   8  57 174 |   d = type_project
+
+And this is the one from the section above:
+
+       a   b   c   d   <-- classified as
+     994  14  61  28 |   a = type_student
+      12 579  15  14 |   b = type_course
+     165  10 506  69 |   c = type_faculty
+      46   7  37 246 |   d = type_project
+
+Since attribute selection did not improve the overall accuracy by a large
+margin and at the same time made several classes worse off, we will use 2,000
+words without attribute selection as our best classifier.
+
+Remove attribute selection by changing the `filter` value back to
+`StringToWordVector` and set `wordsToKeep` to 2000.
+
+![Remove multifilter](./pics/multifilter-remove.png.png)
+
+Run the classifier again to check if we are back to where we want it be.
+
+![Naive Bayes start](./pics/meta-classifier-start.png)
+
+We should see the accuracy and confusion table from the [section where we first
+changed to 2000 words to keep](#choosing-words-to-keep).
 
 ### Verifying the naive Bayes classifier on the test set
 
