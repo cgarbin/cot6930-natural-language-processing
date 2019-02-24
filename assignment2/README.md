@@ -349,14 +349,17 @@ It improved, but not by much.
     Correctly Classified Instances        2325               82.9468 %
     Incorrectly Classified Instances       478               17.0532 %
 
-The confusion matrix shows that accuray for each class (true positive)
-improved, with the excpetion of a decline for `project`.
+The confusion matrix shows that accuracy for each class (true positive)
+improved, except for a decline in the `project` class.
 
        a   b   c   d   <-- classified as
      994  14  61  28 |   a = type_student
       12 579  15  14 |   b = type_course
      165  10 506  69 |   c = type_faculty
       46   7  37 246 |   d = type_project
+
+Although it was not a large improvement, it is an improvement nevertheless, so
+we will keep using 2000 words.
 
 #### Selecting attributes
 
