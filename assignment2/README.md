@@ -244,17 +244,17 @@ What kind of information are we sharing that we should not? Any information
 that is created using the entire dataset. The typical example is tf-idf. It
 uses the number of documents as part of its formula.
 
-In other cases, when we do not use the entire dataset for calculation we may
+In other cases, when we do not use the entire dataset for calculations, we may
 get away with creating the document-term matrix with the complete train
 dataset. However, starting with splitting the train dataset first, then
-creating the separate document- termn matrix is a better practice that will
+creating the separate document-term matrix is a better practice that will
 avoid errors down the road, as we run more experiments.
 
 Applying filter and classification together looks like the picture below. The
-major difference in this case is that first we split the original dataset into
-a train and a validation fold, then create the document-term matrix for each
-of them separately. Now the classifier only "sees" data is that part of the
-train fold.
+major difference is that first we split the original dataset into a train and a
+validation fold, then create the document-term matrix for each of them
+separately. Now the classifier only "sees" data that are part of the train
+fold.
 
 ![Correct way to cross-validate in Weka](./pics/weka-cross-validation-correct.png)
 
@@ -264,26 +264,39 @@ We will use a multinomial naive Bayes classifier because it "is the event
 model typically used for document classification, with events representing the
 occurrence of a word in a single document" ([source](https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Multinomial_naive_Bayes)).
 
-1. Choose the `NaivesBayesMultinomial` classifier.
+To apply the `StringToWordVector` filter before the classifier, we will use
+Weka's meta classifier `FilteredClassifier` in the `Classify` tab.
+
+![Meta classifier - FilteredClassifier](./pics/meta-classifier-filteredclassifier.png)
+
+Click on any part of the `Classifier` textbox to bring up the configuration
+window. It has a field for `classifier` and a field for `filter`. Choose the
+`NaiveBayesMultinomial` for `classifier` and `StringToWordVector` for `filter`.
+
+![Meta classifier - FilteredClassifier](./pics/meta-classifer-configuration.png)
+
+Now we are ready to start the classification and cross-validation. Back in
+`Classify` tab:
+
 1. Select cross-validation.
 1. Select the `type` field (called `page_type` in Weka) as the attribute to
    classify on.
 1. Click on the `Start` button.
 
-![Naive Bayes start](./pics/naive-bayes-start.png)
+![Naive Bayes start](./pics/meta-classifier-start.png)
 
-This will result in about 81.8% accuracy:
+This will result in about 82.7% accuracy.
 
-    Correctly Classified Instances        2292               81.7695 %
-    Incorrectly Classified Instances       511               18.2305 %
+    Correctly Classified Instances        2317               82.6614 %
+    Incorrectly Classified Instances       486               17.3386 %
 
 From the confusion matrix we can see where the classifier is making mistakes:
 
        a   b   c   d   <-- classified as
-     979  15  74  29 |   a = type_student
-      16 568  18  18 |   b = type_course
-     185   7 491  67 |   c = type_faculty
-      48   6  28 254 |   d = type_project
+     991  16  62  28 |   a = type_student
+      12 576  16  16 |   b = type_course
+     174   8 499  69 |   c = type_faculty
+      49   8  28 251 |   d = type_project
 
 The `faculty` class is a source of several errors. A significant amount of its
 documents are being classified as `student`.
@@ -293,14 +306,8 @@ documents are being classified as `student`.
 In this section we will attempt to improve the performance of the classifiers
 by fine-tuning applicable parameters.
 
-An **important optimization concept**: all fine-tuning exercises are verified
-with cross-validation to check the improvements (or a validation set, but we
-do not have one in this case, so we fall back to cross-validation). We must
-not use the test data for fine-tuning. "Otherwise, the very real danger is that
-you may tune your hyperparameters to work well on the test set, but if you were
-to deploy your model you could see a significantly reduced performance."
-([source](http://cs231n.github.io/classification/#val) - see more details in
-that page).
+We still keep using cross-validation in this stage, not the test dataset, as
+explain [in this section](#preserving-the-test-dataset).
 
 ### Choosing words to keep
 
@@ -308,7 +315,7 @@ A key attribute of `StringToWordVector` filter is `-W`, the number of words to
 keep.
 
 In [this discussion in Weka's forum](http://weka.8497.n7.nabble.com/StringToWordVector-W-option-td940.html)
-it is explained that the number of words is kept per class:
+it is explained that the number of words is kept per class.
 
 > Additionally, if a class attribute is set, then you get the
 > most common words per class, i.e. top 1000 for class A, plus top 1000
@@ -346,7 +353,7 @@ With the new filter is applied we can run the classifier again. Back to the
 
 ![Naive Bayes classify again](./pics/naive-bayes-classify-again.png)
 
-We get a slightly higher accuracy when we keep more words:
+We get a slightly higher accuracy when we keep more words.
 
     Correctly Classified Instances        2310               82.4117 %
     Incorrectly Classified Instances       493               17.5883 %
