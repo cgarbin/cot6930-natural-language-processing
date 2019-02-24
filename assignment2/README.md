@@ -461,7 +461,7 @@ training. Therefore we can say that the classifier generalizes well.
     Incorrectly Classified Instances       220               15.7593 %
 
 The confusion matrix shows that it behaves about the same as during the
-trianing phase (a good thing in this case).
+training phase (a good thing in this case).
 
        a   b   c   d   <-- classified as
      469  10  47  18 |   a = type_student
