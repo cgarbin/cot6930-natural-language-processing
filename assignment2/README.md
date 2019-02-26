@@ -122,7 +122,7 @@ Follow the same steps to start the Explorer and open the test dataset file.
 ![Inspecting the test dataset](./pics/inspect-test-dataset.png)
 
 As in the train dataset, the test dataset is also imbalanced, but it is also
-expected, for the same reasons dicussed for the train dataset.
+expected, for the same reasons discussed for the train dataset.
 
 ## Step 4 - Analyzing the datasets
 
@@ -264,10 +264,10 @@ occurrence of a word in a single document" ([source](https://en.wikipedia.org/wi
 
 As explained in the previous section, we will split the train dataset before
 we create the document-term matrix. To do that we need to apply the
-`StringToWordVector` filter before the classifier, using Weka's meta classifier
+`StringToWordVector` filter before the classifier, using Weka's meta-classifier
 `FilteredClassifier` in the `Classify` tab.
 
-![Meta classifier - FilteredClassifier](./pics/meta-classifier-filteredclassifier.png)
+![Meta-classifier - FilteredClassifier](./pics/meta-classifier-filteredclassifier.png)
 
 Click on any part of the `Classifier` textbox to bring up the configuration
 window. It has a field for `classifier` and a field for `filter`. Choose the
@@ -275,7 +275,7 @@ window. It has a field for `classifier` and a field for `filter`. Choose the
 Then click anywhere in `StringToWordVector` textbox to brig up its
 configuration window and choose `True` for `outputWordCounts`.
 
-![Meta classifier - FilteredClassifier](./pics/meta-classifier-configuration.png)
+![Meta-classifier - FilteredClassifier](./pics/meta-classifier-configuration.png)
 
 Now we are ready to start the classification and cross-validation. Back in
 `Classify` tab:
@@ -375,7 +375,7 @@ First we change the current filter to `MultiFilter`.
 
 ![Add MultiFilter](./pics/multifilter-add.png)
 
-`MultiFilter` shows a `AllFilter` by default. We do not need it. Let's delete
+`MultiFilter` shows an `AllFilter` by default. We do not need it. Let's delete
 it.
 
 ![Delete AllFilter](./pics/multifilter-delete-allfilter.png)
@@ -389,13 +389,13 @@ After tokenization we add `AttributeSelection`.
 
 ![Add AttributeSelection](./pics/multifilter-add-attributeselection.png)
 
-The final step is to change `StringToWordVector` to keep use word counts and
-to keep 2000 words, as we did in the previous steps, then close the multifilter
-window by pressing on its X button (it doesn't have an `OK` or `Close`button).
+The final step is to change `StringToWordVector` to use word counts and to keep
+2000 words, as we did in the previous steps, then close the multifilter window
+by pressing on its X button (it doesn't have an `OK` or `Close`button).
 
 ![Configure StringToWordVector](./pics/multifilter-configure-stringtowordvector.png)
 
-With the multifilter in place we can run the classifer again.
+With the multifilter in place we can run the classifier again.
 
 ![Naive Bayes start](./pics/meta-classifier-start.png)
 
@@ -472,7 +472,7 @@ Since we are using overall accuracy as the deciding factor, we will use the
 classifier from attempt number 3 as the best classifier resulting from the
 fine-tuning process.
 
-The next step is to check the peformance of that classifier in unseen data,
+The next step is to check the performance of that classifier in unseen data,
 using the test dataset.
 
 Before going into the test dataset evaluation remove tf-idf by resetting
@@ -482,7 +482,7 @@ Before going into the test dataset evaluation remove tf-idf by resetting
 
 Once we are done with fine-tuning we need to check how classifier number 3
 behaves on unseen data. That is an indication of how well (or not) it will
-peform in real life.
+perform in real life.
 
 This is where the test dataset comes in. It has been held back so far, to have
 a dataset that the classifer has never seen before.
@@ -491,7 +491,7 @@ To evaluate with a test dataset change the test options to `Supplied test set`,
 load the dataset and configure the class attribute (the same we are using for
 training, the `type` attribute, or `page_type` in Weka).
 
-![Naive Bayes configuraton of test dataset evaluation](./pics/naive-bayes-test-dataset-evaluation-configuration.png)
+![Naive Bayes configuration of test dataset evaluation](./pics/naive-bayes-test-dataset-evaluation-configuration.png)
 
 Once it is configured, verify that the test options are set correctly (and that
 `IDFTransform` and `TFTransform` are reset to `False`), then start the test.
@@ -536,8 +536,8 @@ And these are the metrics for the training phase, with cross-validation:
 ## Step 7 - Classifying and fine-tuning with an SVM classifier
 
 In this section we will use the `libsvm` classifier in Weka. Another flavor of
-the SVM classifier, called `SMO`, is also avaialble in Weka. Since the
-assignment asked for `SVM` in genearal, we will stick with the regular SVM
+the SVM classifier, called `SMO`, is also available in Weka. Since the
+assignment asked for `SVM` in general, we will stick with the regular SVM
 classifier here.
 
 The same concepts of [preserving the test dataset](#preserving-the-test-dataset)
@@ -547,7 +547,7 @@ well.
 
 ### Installing the SVM classifier
 
-The SVM classifiers are part of separate package in Weka, not installed by
+The SVM classifiers are part of a separate package in Weka, not installed by
 default. To install the SVM classifiers, open the package manager (under the
 `Tools` menu), search for `libsvm`, click on the `LibSVM` entry and install it.
 
@@ -556,16 +556,16 @@ default. To install the SVM classifiers, open the package manager (under the
 ### Classifying with the SVM classifier
 
 As explained in [this section](#splitting-the-train-dataset-before-creating-document-term-matrices),
-we will split the train datast before we create the document-term matrix. To do
-that we need to apply the `StringToWordVector` filter before the classifier,
-using Weka's meta classifier `FilteredClassifer` in the `Classify` tab.
+we will split the train dataset before we create the document-term matrix. To
+do that we need to apply the `StringToWordVector` filter before the classifier,
+using Weka's meta-classifier `FilteredClassifer` in the `Classify` tab.
 
 ![Add filtered classifier](./pics/svm-add-filtered-classifier.png)
 
 Once `FilteredClassifier` is in place we need to configure its classifier and
 filter.
 
-Starting with the classfier: change it to `libSVM`.
+Starting with the classifier: change it to `libSVM`.
 
 ![Add libSVM classifier](./pics/svm-configure-classifier.png)
 
@@ -627,7 +627,7 @@ Most of that improvement comes from the `project` class.
 
 #### Using more words
 
-Since using wordscounts improved the classifier, now we will try to use more
+Since using word counts improved the classifier, now we will try to use more
 words. The default configuration of `StringToWordVector` keeps 1000 words per
 class (see note [in this section](#choosing-words-to-keep) that this is an
 approximate number).
@@ -651,7 +651,7 @@ Since adding more words lowered accuracy, we will go in the opposite direction
 now. Repeat the procedure above, this time reducing `wordsToKeep` to 500, and
 run the classifier again.
 
-Keeping 500 words improves the classifier by a signfiicant amount:
+Keeping 500 words improves the classifier by a significant amount:
 
     Correctly Classified Instances        2298               81.9836 %
     Incorrectly Classified Instances       505               18.0164 %
@@ -673,7 +673,7 @@ attribute selection to pick the attributes to keep.
 Follow the steps [in the naive Bayes section](#selecting-attributes) to add the
 attribute selection filter, then run the classifier again.
 
-This time it will take longer to run, bceause of the attribute selection step.
+This time it will take longer to run, because of the attribute selection step.
 
 The accuracy with attribute selection improves a bit more:
 
@@ -730,7 +730,7 @@ We will use it for the final validation with the test set.
 
 Once we are done with fine-tuning we need to check how classifier number 6
 behaves on unseen data. That is an indication of how well (or not) it will
-peform in real life.
+perform in real life.
 
 This is where the test dataset comes in. It has been held back so far, to have
 a dataset that the classifer has never seen before.
@@ -739,7 +739,7 @@ To evaluate with a test dataset change the test options to `Supplied test set`,
 load the dataset and configure the class attribute (the same we are using for
 training, the `type` attribute, or `page_type` in Weka).
 
-![SVM configuraton of test dataset evaluation](./pics/svm-test-dataset-evaluation.png)
+![SVM configuration of test dataset evaluation](./pics/svm-test-dataset-evaluation.png)
 
 The accuracy on the test dataset is close to the accuracy we got with the train
 dataset. Therefore we can conclude that the classifier generalizes well.
