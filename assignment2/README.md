@@ -723,8 +723,47 @@ A summary of the fine-tuning attempts:
 | 5       | 500           | Yes                | Yes                 | No     | 83.45                         |
 | 6       | 500           | Yes                | Yes                 | Yes    | 84.20                         |
 
-Classifier number 6, with attribute selection and td-idf has the best accuracy.
+Classifier number 6, with attribute selection and td-idf, has the best accuracy.
 We will use it for the final validation with the test set.
+
+### Verifying the SVM classifier on the test set
+
+Once we are done with fine-tuning we need to check how classifier number 6
+behaves on unseen data. That is an indication of how well (or not) it will
+peform in real life.
+
+This is where the test dataset comes in. It has been held back so far, to have
+a dataset that the classifer has never seen before.
+
+To evaluate with a test dataset change the test options to `Supplied test set`,
+load the dataset and configure the class attribute (the same we are using for
+training, the `type` attribute, or `page_type` in Weka).
+
+![SVM configuraton of test dataset evaluation](./pics/svm-test-dataset-evaluation.png.png)
+
+The accuracy on the test dataset is close to the accuracy we got with the train
+dataset. Therefore we can conclude that the classifier generalizes well.
+
+    Correctly Classified Instances        1193               85.4585 %
+    Incorrectly Classified Instances       203               14.5415 %
+
+These are the detailed accuracy values for the test dataset:
+
+                     TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                     0.934    0.151    0.797      0.934    0.860      0.766    0.891     0.771     type_student
+                     0.884    0.006    0.979      0.884    0.929      0.912    0.939     0.891     type_course
+                     0.837    0.044    0.874      0.837    0.855      0.804    0.896     0.775     type_faculty
+                     0.583    0.019    0.810      0.583    0.678      0.653    0.782     0.523     type_project
+    Weighted Avg.    0.855    0.074    0.860      0.855    0.852      0.795    0.890     0.769
+
+And these are the detailed accuracy metrics with cross-validation:
+
+                     TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                     0.933    0.167    0.782      0.933    0.851      0.750    0.883     0.756     type_student
+                     0.889    0.013    0.950      0.889    0.918      0.897    0.938     0.869     type_course
+                     0.832    0.044    0.874      0.832    0.852      0.801    0.894     0.772     type_faculty
+                     0.479    0.016    0.805      0.479    0.601      0.585    0.732     0.448     type_project
+    Weighted Avg.    0.842    0.082    0.847      0.842    0.836      0.776    0.880     0.748
 
 ## Apendix
 
