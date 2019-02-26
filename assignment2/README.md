@@ -495,8 +495,8 @@ training, the `type` attribute, or `page_type` in Weka).
 
 ![Naive Bayes configuraton of test dataset evaluation](./pics//naive-bayes-test-dataset-evaluation-configuration.png)
 
-Once it is configured, verify that the test options are set correctly and start
-the test.
+Once it is configured, verify that the test options are set correctly (and that
+`IDFTransform` and `TFTransform` are reset to `False`), then start the test.
 
 ![Naive Bayes test dataset evaluation](./pics//naive-bayes-test-dataset-evaluation-start.png)
 
