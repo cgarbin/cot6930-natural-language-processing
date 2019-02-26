@@ -562,6 +562,74 @@ using Weka's meta classifier `FilteredClassifer` in the `Classify` tab.
 
 ![Add filtered classifier](./pics/svm-add-filtered-classifier.png)
 
+Once `FilteredClassifier` is in place we need to configure its classifier and
+filter.
+
+Starting with the classfier: change it to `libSVM`.
+
+![Add libSVM classifier](./pics/svm-configure-classifier.png)
+
+Then change the filter to `StringToWordVector` (under the "unsupervised" list)
+and close the configuration window.
+
+![Add StrongToWordVector filter](./pics/svm-configure-filter.png)
+
+Configure the test options to use cross-validation with the type field
+(`page_type`) in Weka and start the classification.
+
+![Start classification](./pics/svm-start-classification.png)
+
+This results in 73.4% accuracy.
+
+    Correctly Classified Instances        2057               73.3857 %
+    Incorrectly Classified Instances       746               26.6143 %
+
+From the confusion matrix we can see that other than the `student` class, all
+other classes fair poorly.
+
+        a    b    c    d   <-- classified as
+     1078    4   14    1 |    a = type_student
+      149  465    5    1 |    b = type_course
+      260    3  486    1 |    c = type_faculty
+      250    1   57   28 |    d = type_project
+
+#### Using word counts
+
+The default configuration of `StringToWordVector` creates a binary document-term
+matrix (tracks of the words is present or absent, but not how many times it is
+present in a document).
+
+As a first attempt to improve the classifier we will change `StringToWordVector`
+to count words. The idea is to give more information to the classifier.
+
+Change `outputWordCounts` to true and save the configuration.
+
+![Change to word count](./pics/smv-change-to-word-count.png)
+
+Verify the test configuration and run the classifier again.
+
+![Start classification](./pics/svm-start-classification.png)
+
+That change improves the accuracy by about 3%.
+
+    Correctly Classified Instances        2133               76.097  %
+    Incorrectly Classified Instances       670               23.903  %
+
+Most of that improvement comes from the `project` class.
+
+        a    b    c    d   <-- classified as
+     1050    4   34    9 |    a = type_student
+      123  478   14    5 |    b = type_course
+      260    9  466   15 |    c = type_faculty
+      134   12   51  139 |    d = type_project
+
+### Using more words
+
+Since using wordscounts improved the classifier, now we will try to use more
+words. The default configuration of `StringToWordVector` keeps 1000 words per
+class (see note [in this section](#choosing-words-to-keep) that this is an
+approximate number).
+
 ### Fine-tuning an SVM classifier
 
 ## Apendix
