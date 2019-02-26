@@ -67,7 +67,7 @@ This is the error that Weka shows if we don't add the `type_` prefix:
 
 TODO: add example of this error.
 
-Although Weka has is capable of transforming data, we decided to transform the
+Although Weka is capable of transforming data, we decided to transform the
 data using [a Python script](./toarff.py), mainly because of familiarity with
 Python and how easy it is to perform these text transformations using it.
 
@@ -117,8 +117,7 @@ will parse the document to extract words.
 In this step we will repeat what was done for the train data (above), now with
 the test data.
 
-Following the same steps to start the Explorer and open the file results in
-the picture below.
+Follow the same steps to start the Explorer and open the test dataset file.
 
 ![Inspecting the test dataset](./pics/inspect-test-dataset.png)
 
@@ -409,7 +408,7 @@ It results in significantly better accuracy:
     Incorrectly Classified Instances       411               14.6629 %
 
 Inspecting the confusion matrix shows that the accuracy improvement is a
-result of a large improvment for the `faculty` class, while making all other
+result of a large improvement for the `faculty` class, while making all other
 classes slightly worse.
 
 This is the confusion matrix with attribute selection (what we just did):
