@@ -537,6 +537,18 @@ And these are the metrics for the training phase, with cross-validation:
 
 ## Step 7 - Classifying and fine-tuning with an SVM classifier
 
+In this section we will use the `libsvm` classifier in Weka. Another flavor of
+the SVM classifier, called `SMO`, is also avaialble in Weka. Since the
+assignment asked for `SVM` in genearal, we will stick with the regular SVM
+classifier here.
+
+The same concepts of [preserving the test dataset](#preserving-the-test-dataset)
+and [splitting the train dataset before creating document-term matrices](#splitting-the-train-dataset-before-creating-document-term-matrices)
+discussed in the naive Bayes classifier section apply to the SVM classifier as
+well.
+
+### Installing the SVM classifier
+
 ### Classifying with the SVM classifier
 
 ### Fine-tuning an SVM classifier
