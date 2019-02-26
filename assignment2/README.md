@@ -593,6 +593,8 @@ other classes fair poorly.
       260    3  486    1 |    c = type_faculty
       250    1   57   28 |    d = type_project
 
+### Fine-tuning an SVM classifier
+
 #### Using word counts
 
 The default configuration of `StringToWordVector` creates a binary document-term
@@ -623,7 +625,7 @@ Most of that improvement comes from the `project` class.
       260    9  466   15 |    c = type_faculty
       134   12   51  139 |    d = type_project
 
-### Using more words
+#### Using more words
 
 Since using wordscounts improved the classifier, now we will try to use more
 words. The default configuration of `StringToWordVector` keeps 1000 words per
@@ -643,7 +645,60 @@ Keeping more words resulted in lower accuracy:
     Correctly Classified Instances        1916               68.3553 %
     Incorrectly Classified Instances       887               31.6447 %
 
-### Fine-tuning an SVM classifier
+#### Using fewer words
+
+Since adding more words lowered accuracy, we will go in the opposite direction
+now. Repeat the procedure above, this time reducing `wordsToKeep` to 500, and
+run the classifier again.
+
+Keeping 500 words improves the classifier by a signfiicant amount:
+
+    Correctly Classified Instances        2298               81.9836 %
+    Incorrectly Classified Instances       505               18.0164 %
+
+The `student` class is slightly worse, but all other classes are better.
+
+        a    b    c    d   <-- classified as
+     1044   10   32   11 |    a = type_student
+       85  519   10    6 |    b = type_course
+      157   17  555   21 |    c = type_faculty
+      108   14   34  180 |    d = type_project
+
+#### Selecting attributes
+
+Since reducing the number of attributes improved the classifier, we will
+attempt to reduce the attributes even further. But this time we will use
+attribute selection to pick the attributes to keep.
+
+Follow the steps [in the naive Bayes section](#selecting-attributes) to add the
+attribute selection filter, then run the classifier again.
+
+This time it will take longer to run, bceause of the attribute selection step.
+
+The accuracy with attribute selection improves a bit more:
+
+    Correctly Classified Instances        2339               83.4463 %
+    Incorrectly Classified Instances       464               16.5537 %
+
+Not all classes improved equally. `course` and `faculty` are better, but
+`student` and `project` decreased somewhat.
+
+        a    b    c    d   <-- classified as
+     1017   10   55   15 |    a = type_student
+       70  539    7    4 |    b = type_course
+      105    9  615   21 |    c = type_faculty
+      118    2   48  168 |    d = type_project
+
+Since we are going for overall accuracy, we will keep this classifier as the
+best one so far.
+
+### Using tf-idf
+
+As we did for the naive Bayes classifier, we will check if tf-idf improves the
+performance of the SVM classifier.
+
+Follow the steps [in the naive Bayes section[(#using-tf-idf)] to change
+`StringToWordVector` to use tf-idf, then run the classifier again.
 
 ## Apendix
 
