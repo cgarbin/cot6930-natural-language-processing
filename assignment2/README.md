@@ -602,7 +602,7 @@ present in a document).
 As a first attempt to improve the classifier we will change `StringToWordVector`
 to count words. The idea is to give more information to the classifier.
 
-Change `outputWordCounts` to true and save the configuration.
+Change `outputWordCounts` to `True` and save the configuration.
 
 ![Change to word count](./pics/smv-change-to-word-count.png)
 
@@ -629,6 +629,19 @@ Since using wordscounts improved the classifier, now we will try to use more
 words. The default configuration of `StringToWordVector` keeps 1000 words per
 class (see note [in this section](#choosing-words-to-keep) that this is an
 approximate number).
+
+Change `wordsToKepp` to 2000 and save the configuration.
+
+![Change to words to keep](./pics/svm-change-to-2000-words.png)
+
+Verify the test configuration and run the classifier again.
+
+![Start classification](./pics/svm-start-classification.png)
+
+Keeping more words resulted in lower accuracy:
+
+    Correctly Classified Instances        1916               68.3553 %
+    Incorrectly Classified Instances       887               31.6447 %
 
 ### Fine-tuning an SVM classifier
 
