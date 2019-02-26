@@ -555,6 +555,13 @@ default. To install the SVM classifiers, open the package manager (under the
 
 ### Classifying with the SVM classifier
 
+As explained in [this section](#splitting-the-train-dataset-before-creating-document-term-matrices),
+we will split the train datast before we create the document-term matrix. To do
+that we need to apply the `StringToWordVector` filter before the classifier,
+using Weka's meta classifier `FilteredClassifer` in the `Classify` tab.
+
+![Add filtered classifier](./pics/svm-add-filtered-classifier.png)
+
 ### Fine-tuning an SVM classifier
 
 ## Apendix
