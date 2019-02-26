@@ -457,7 +457,7 @@ Accuracy decreases somewhat:
     Correctly Classified Instances        2370               84.5523 %
     Incorrectly Classified Instances       433               15.4477 %
 
-### Summary of the naive Bayes fine tunning
+### Summary of the naive Bayes classifier fine tunning
 
 A summary of the fine-tuning attempts:
 
@@ -689,16 +689,42 @@ Not all classes improved equally. `course` and `faculty` are better, but
       105    9  615   21 |    c = type_faculty
       118    2   48  168 |    d = type_project
 
-Since we are going for overall accuracy, we will keep this classifier as the
-best one so far.
-
 ### Using tf-idf
 
 As we did for the naive Bayes classifier, we will check if tf-idf improves the
 performance of the SVM classifier.
 
-Follow the steps [in the naive Bayes section[(#using-tf-idf)] to change
+Follow the steps [in the naive Bayes section](#using-tf-idf) to change
 `StringToWordVector` to use tf-idf, then run the classifier again.
+
+Accuracy improves a bit more:
+
+    Correctly Classified Instances        2360               84.1955 %
+    Incorrectly Classified Instances       443               15.8045 %
+
+And except for a small decrease in the `project` class, every class improved.
+
+        a    b    c    d   <-- classified as
+     1024   15   45   13 |    a = type_student
+       56  551    5    8 |    b = type_course
+       97   11  624   18 |    c = type_faculty
+      132    3   40  161 |    d = type_project
+
+### Summary of the SVM classifier fine tunning
+
+A summary of the fine-tuning attempts:
+
+| Attempt | `wordsToKeep` | `outputWordCounts` | Attribute selection | tf-idf | Cross-validation accuracy (%) |
+| ------- | ------------- | ------------------ | ------------------- | ------ | ----------------------------- |
+| 1       | 1000          | No                 | No                  | No     | 73.39                         |
+| 2       | 1000          | Yes                | No                  | No     | 76.10                         |
+| 3       | 2000          | Yes                | No                  | No     | 68.36                         |
+| 4       | 500           | Yes                | No                  | No     | 81.98                         |
+| 5       | 500           | Yes                | Yes                 | No     | 83.45                         |
+| 6       | 500           | Yes                | Yes                 | Yes    | 84.20                         |
+
+Classifier number 6, with attribute selection and td-idf has the best accuracy.
+We will use it for the final validation with the test set.
 
 ## Apendix
 
