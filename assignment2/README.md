@@ -739,7 +739,7 @@ To evaluate with a test dataset change the test options to `Supplied test set`,
 load the dataset and configure the class attribute (the same we are using for
 training, the `type` attribute, or `page_type` in Weka).
 
-![SVM configuraton of test dataset evaluation](./pics/svm-test-dataset-evaluation.png.png)
+![SVM configuraton of test dataset evaluation](./pics/svm-test-dataset-evaluation.png)
 
 The accuracy on the test dataset is close to the accuracy we got with the train
 dataset. Therefore we can conclude that the classifier generalizes well.
@@ -764,9 +764,3 @@ And these are the detailed accuracy metrics with cross-validation:
                      0.832    0.044    0.874      0.832    0.852      0.801    0.894     0.772     type_faculty
                      0.479    0.016    0.805      0.479    0.601      0.585    0.732     0.448     type_project
     Weighted Avg.    0.842    0.082    0.847      0.842    0.836      0.776    0.880     0.748
-
-## Apendix
-
-### Python script for text to ARFF transformation
-
-TODO: add Python script here.
