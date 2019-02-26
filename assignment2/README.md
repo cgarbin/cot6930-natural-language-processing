@@ -68,9 +68,8 @@ This is the error that Weka shows if we don't add the `type_` prefix:
 TODO: add example of this error.
 
 Although Weka has is capable of transforming data, we decided to transform the
-data using a Python script, mainly because of familiarity with Python and how
-easy it is to perform these text transformations using it. The python script is
-shown in [this appendix section](#python-script-for-text-to-arff-transformation).
+data using [a Python script](./toarff.py), mainly because of familiarity with
+Python and how easy it is to perform these text transformations using it.
 
 To execute the script:
 
@@ -558,10 +557,6 @@ default. To install the SVM classifiers, open the package manager (under the
 ### Classifying with the SVM classifier
 
 ### Fine-tuning an SVM classifier
-
-## Step 8 - Reporting the fine-tuned classifier
-
-TODO: final results using test data
 
 ## Apendix
 
