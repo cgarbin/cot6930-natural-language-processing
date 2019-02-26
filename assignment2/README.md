@@ -553,7 +553,7 @@ The SVM classifiers are part of separate package in Weka, not installed by
 default. To install the SVM classifiers, open the package manager (under the
 `Tools` menu), search for `libsvm`, click on the `LibSVM` entry and install it.
 
-![Install SVM classifier](./pics/naive-bayes-test-dataset-evaluation-start.png)
+![Install SVM classifier](./pics/svm-install.png)
 
 ### Classifying with the SVM classifier
 
