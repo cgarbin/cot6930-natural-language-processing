@@ -493,12 +493,12 @@ To evaluate with a test dataset change the test options to `Supplied test set`,
 load the dataset and configure the class attribute (the same we are using for
 training, the `type` attribute, or `page_type` in Weka).
 
-![Naive Bayes configuraton of test dataset evaluation](./pics//naive-bayes-test-dataset-evaluation-configuration.png)
+![Naive Bayes configuraton of test dataset evaluation](./pics/naive-bayes-test-dataset-evaluation-configuration.png)
 
 Once it is configured, verify that the test options are set correctly (and that
 `IDFTransform` and `TFTransform` are reset to `False`), then start the test.
 
-![Naive Bayes test dataset evaluation](./pics//naive-bayes-test-dataset-evaluation-start.png)
+![Naive Bayes test dataset evaluation](./pics/naive-bayes-test-dataset-evaluation-start.png)
 
 The result is a classification accuracy very close to the one achieved during
 training. Therefore we can say that the classifier generalizes well.
@@ -548,6 +548,12 @@ discussed in the naive Bayes classifier section apply to the SVM classifier as
 well.
 
 ### Installing the SVM classifier
+
+The SVM classifiers are part of separate package in Weka, not installed by
+default. To install the SVM classifiers, open the package manager (under the
+`Tools` menu), search for `libsvm`, click on the `LibSVM` entry and install it.
+
+![Install SVM classifier](./pics/naive-bayes-test-dataset-evaluation-start.png)
 
 ### Classifying with the SVM classifier
 
