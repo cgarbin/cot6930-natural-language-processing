@@ -454,9 +454,6 @@ Then run the classifier again.
 
 ![Naive Bayes start](./pics/meta-classifier-start.png)
 
-Given the overall accuracy improvement, without affecting the other class by
-a large margin, we will use this test as our final classifier.
-
 Accuracy decreases somewhat:
 
     Correctly Classified Instances        2370               84.5523 %
