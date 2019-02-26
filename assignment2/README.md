@@ -429,16 +429,65 @@ And this is the one from the section above:
      165  10 506  69 |   c = type_faculty
       46   7  37 246 |   d = type_project
 
+### Using tf-idf
+
+So far we have been using only data within each document (the document-term
+populated with word counts).
+
+In [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) the _idf_ term, the
+inverse document frequency, is calculated as _log(total number of
+documents/number of documents with the term)_. This brings information across
+all the documents into consideration.
+
+In this test we check it using tf-idf improves the classifier. First we need
+to switch to tf-idf by setting `IDFTransform` and `TFTransform` in the
+`StringToWordVector` filter.
+
+Click anywhere in the `Classifier` textbox (where it shows
+`FilteredClassifier...`) to open the configuration window, then navigate to
+the `StringToWordVector` filter and set `IDFTransform` and `TFTransform` and
+to `True`.
+
+![Naive Bayes add tf-idf](./pics/naive-bayes-add-tfidf.png)
+
+Then run the classifier again.
+
+![Naive Bayes start](./pics/meta-classifier-start.png)
+
 Given the overall accuracy improvement, without affecting the other class by
 a large margin, we will use this test as our final classifier.
 
-The next step is to check the peformance in unseen data, using the test dataset.
+Accuracy decreases somewhat:
+
+    Correctly Classified Instances        2370               84.5523 %
+    Incorrectly Classified Instances       433               15.4477 %
+
+### Summary of the naive Bayes fine tunning
+
+A summary of the fine-tuning attempts:
+
+| Attempt | `wordsToKeep` | Attribute selection | tf-idf | Cross-validation accuracy (%) |
+| ------- | ------------- | ------------------- | ------ | ----------------------------- |
+| 1       | 1000          | No                  | No     | 82.66                         |
+| 2       | 2000          | No                  | No     | 82.95                         |
+| 3       | 2000          | Yes                 | No     | 85.34                         |
+| 4       | 2000          | Yes                 | Yes    | 84.55                         |
+
+Since we are using overall accuracy as the deciding factor, we will use the
+classifier from attempt number 3 as the best classifier resulting from the
+fine-tuning process.
+
+The next step is to check the peformance of that classifier in unseen data,
+using the test dataset.
+
+Before going into the test dataset evaluation remove tf-idf by resetting
+`IDFTransform` and `TFTransform` back to `False`.
 
 ### Verifying the naive Bayes classifier on the test set
 
-Once we are done with fine-tuning we need to check how the classifier behaves
-on unseen data. That is an indication of how well (or not) it will peform in
-real life.
+Once we are done with fine-tuning we need to check how classifier number 3
+behaves on unseen data. That is an indication of how well (or not) it will
+peform in real life.
 
 This is where the test dataset comes in. It has been held back so far, to have
 a dataset that the classifer has never seen before.
