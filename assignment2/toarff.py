@@ -3,10 +3,10 @@
 Input file: first word is the class; remainder of the line is the document.
 
 Output: an ARFF file, with the header followed lines where the class is the
-   first word and the remainder words are in quotes (need to be vectorized
+   first word and the remaining words are in quotes (need to be vectorized
    by another tool."
 
-Note that the class name aer prepended with type_ so they don't match the same
+Note that the class names are prepended with type_ so they don't match the same
 word inside the document. Weka throws an error when that happens.
 """
 
