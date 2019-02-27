@@ -24,7 +24,7 @@ Input data:
 
 ### Datasets preprocessing and inspection
 
-Datasets for the assignment was provided in the form of two space-separated
+Datasets for the assignment were provided in the form of two space-separated
 files, one with train data and another with test dataset.
 
 Although Weka could read and transform this format, we chose to prepare the
@@ -34,19 +34,38 @@ format. Having the data in ARFF simplfies some of the steps in Weka.
 Details of preprocessing are described in [step 1](h#step-1---preprocessing-the-data).
 
 [Step 2](h#step-2---inspecting-the-train-dataset) inspects the datasets and
+[step 3](#step-3---creating-the-train-dataset-document-word-matrix) shows how
+to create document-word (or document-term) matrix for the train dataset in Weka.
 
-### Naive Bayes classifier
+### Results for the Naive Bayes classifier
 
 The Naives Bayes classifier was trained with a combination of parameters.
 
 The best performing classifier used `StringToWordVector` with `outputWordCounts`
-set to `True`and `wordsToKeep` set to 2000, followed by the attribute selection
+set to `True` and `wordsToKeep` set to 2000, followed by the attribute selection
 filter `AttributeSelection`.
 
 This classifer achieved 85.34% accuracy in the training phase (with cross-
 validation) and 84.24% when validate with the test set.
 
-Details of the experiements to fine-tune the classifier are []
+Details to configure and fine-tune the Naive Bayes classifier are described in
+[step 4](#step-4---classifying-and-fine-tuning-with-a-naive-bayes-classifier).
+
+### Results for the SVM classifier
+
+The SVM classifier was also trained with a combination of parameters.
+
+The best performing classifier used `StringToWordVector` with `outputWordCounts`
+set to `True`, `wordsToKeep` set to 2000. Using tf-idf, by setting
+`IDFTransform` and `TFTransform` to `True` was needed to get the best
+accuracy for this classifier. Attribute selection, with the `AttributeSelection`
+filter was also needed.
+
+This classifier achieved 84.2% in the training phase (with cross-validation)
+and 85.5% when validated with the test set.
+
+Details to configure and fine-tune the SVM classifier are described in
+[step 5](#step-5---classifying-and-fine-tuning-with-an-svm-classifier).
 
 ## Step 1 - Preprocessing the data
 
@@ -572,6 +591,11 @@ well.
 The SVM classifiers are part of a separate package in Weka, not installed by
 default. To install the SVM classifiers, open the package manager (under the
 `Tools` menu), search for `libsvm`, click on the `LibSVM` entry and install it.
+
+(Side note: this section switches from the red rectangles to numbered arrows to
+indicate relevant UI pieces. The numbered arrows indicate the order of the
+steps, which the red rectangles do not. I didn't have this brilliant idea until
+I reached this point in the work...)
 
 ![Install SVM classifier](./pics/svm-install.png)
 
