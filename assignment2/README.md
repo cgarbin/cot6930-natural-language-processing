@@ -56,7 +56,7 @@ Details to configure and fine-tune the Naive Bayes classifier are described in
 The SVM classifier was also trained with a combination of parameters.
 
 The best performing classifier used `StringToWordVector` with `outputWordCounts`
-set to `True` and `wordsToKeep` set to 2000. Using tf-idf, by setting
+set to `True` and `wordsToKeep` set to 500. Using tf-idf, by setting
 `IDFTransform` and `TFTransform` to `True` was needed to get the best
 accuracy for this classifier. Attribute selection, with the `AttributeSelection`
 filter was also needed.
@@ -117,24 +117,24 @@ To execute the script:
 Run the script in the train and test dataset files.
 
 At this point we should have two ARFF files, one for the train dataset and one
-for the test data set, ready to load in Weka.
+for the test datasets, ready to load in Weka.
 
 ## Step 2 - Inspecting the datasets
 
 ### Inspecting the train dataset
 
 In this section we will inspect the train dataset using Weka. The goals are to
-have a general understanding of the datset and to check if there are problems
+have a general understanding of the dataset and to check if there are problems
 with that could affect training and evaluation.
 
-A possible problem is class imbalance. Within a dataset each class should be
-as frequent as they are in the real data. For example, if class A is twice as
-frequent as class B in the real data, then the train and test data set should
-have twice as many samples of A than B. Across the datasets the class should
-have the same frequency. For example, if class A occurs twice as frequently
-as other classes in the train dataset, it should also occur twice as
-frequently in the test dataset. This is taken care of by balancing classes
-within the datasets.
+A possible problem is class imbalance within each dataset and across the
+datasets. Within a dataset each class should be as frequent as they are in the
+real data. For example, if class A is twice as frequent as class B in the real
+data, then the train and test datasets should have twice as many samples of A
+than B. Across the datasets the class should have the same frequency. For
+example, if class A occurs twice as frequently as other classes in the train
+dataset, it should also occur twice as frequently in the test dataset. This is
+taken care of by balancing classes within the datasets.
 
 To load and inspect in Weka:
 
@@ -144,9 +144,10 @@ To load and inspect in Weka:
 ![Inspecting the train dataset](./pics/inspect-train-dataset.png)
 
 In the picture above we can see that the dataset is imbalanced. The `student`
-class has more samples than the other classes. We should expect to have more
+class has more samples than the other classes. However, this imbalance within
+the dataset is not a problem in this case. We should expect to have more
 students since they outnumber faculty in real life by an order of magnitude or
-more. This imbalance within the dataset is not a problem in this case.
+more.
 
 Note that at this point the data shows only two pieces of data, the class and
 the text. All words from the document are under "text". In a later step we
@@ -241,7 +242,7 @@ that process.
 
 An **important optimization concept**: all fine-tuning exercises are verified
 with cross-validation to check the improvements (or a validation set, but we
-do not have one in this case, so we fall back to cross-validation).
+do not have one in this case, so we fall back to cross-va lidation).
 
 We must not use the test data for fine-tuning. It must be used only for the
 final validation of the tuned model. "Otherwise, the very real danger is that
@@ -266,12 +267,12 @@ process looks like this:
 
 ![Wrong way to cross-validate in Weka](./pics/weka-cross-validation-wrong.png)
 
-The separate preprocess step creates one document-term matrix from the complete
-train dataset. Once we split it into the train and validation folds, the train
-fold contains information on the complete train dataset, including information
-that will be part of the validation fold when we split the dataset for cross-
-validation. In other words, the classifier can "peek" into the validation data
-during training.
+The separate preprocessing step creates one document-term matrix from the
+complete train dataset. Once we split it into the train and validation folds,
+the train fold contains information on the complete train dataset, including
+information that will be part of the validation fold when we split the dataset
+for cross-validation. In other words, the classifier can "peek" into the
+validation data during training.
 
 The result is a validation step that produces optimistic results. The
 classifier will look good during validation, but only because it was able to
@@ -312,7 +313,7 @@ we create the document-term matrix. To do that we need to apply the
 Click on any part of the `Classifier` textbox to bring up the configuration
 window. It has a field for `classifier` and a field for `filter`. Choose the
 `NaiveBayesMultinomial` for `classifier` and `StringToWordVector` for `filter`.
-Then click anywhere in `StringToWordVector` textbox to brig up its
+Then click anywhere in `StringToWordVector` textbox to bring up its
 configuration window and choose `True` for `outputWordCounts`.
 
 ![Meta-classifier - FilteredClassifier](./pics/meta-classifier-configuration.png)
@@ -349,7 +350,7 @@ In this section we will attempt to improve the performance of the classifiers
 by fine-tuning applicable parameters.
 
 We still keep using cross-validation in this stage, not the test dataset, as
-explain [in this section](#preserving-the-test-dataset).
+explained [in this section](#preserving-the-test-dataset).
 
 #### Choosing words to keep
 
@@ -431,7 +432,7 @@ After tokenization we add `AttributeSelection`.
 
 The final step is to change `StringToWordVector` to use word counts and to keep
 2000 words, as we did in the previous steps, then close the multifilter window
-by pressing on its X button (it doesn't have an `OK` or `Close`button).
+by pressing on its X button (it doesn't have an `OK` or `Close` button).
 
 ![Configure StringToWordVector](./pics/multifilter-configure-stringtowordvector.png)
 
@@ -525,7 +526,7 @@ behaves on unseen data. That is an indication of how well (or not) it will
 perform in real life.
 
 This is where the test dataset comes in. It has been held back so far, to have
-a dataset that the classifer has never seen before.
+a dataset that the classifier has never seen before.
 
 To evaluate with a test dataset change the test options to `Supplied test set`,
 load the dataset and configure the class attribute (the same we are using for
@@ -603,7 +604,7 @@ I reached this point in the work...)
 As explained in [this section](#splitting-the-train-dataset-before-creating-document-term-matrices),
 we will split the train dataset before we create the document-term matrix. To
 do that we need to apply the `StringToWordVector` filter before the classifier,
-using Weka's meta-classifier `FilteredClassifer` in the `Classify` tab.
+using Weka's meta-classifier `FilteredClassifier` in the `Classify` tab.
 
 ![Add filtered classifier](./pics/svm-add-filtered-classifier.png)
 
@@ -620,7 +621,7 @@ and close the configuration window.
 ![Add StrongToWordVector filter](./pics/svm-configure-filter.png)
 
 Configure the test options to use cross-validation with the type field
-(`page_type`) in Weka and start the classification.
+(`page_type` in Weka) and start the classification.
 
 ![Start classification](./pics/svm-start-classification.png)
 
@@ -677,7 +678,7 @@ words. The default configuration of `StringToWordVector` keeps 1000 words per
 class (see note [in this section](#choosing-words-to-keep) that this is an
 approximate number).
 
-Change `wordsToKepp` to 2000 and save the configuration.
+Change `wordsToKeep` to 2000 and save the configuration.
 
 ![Change to words to keep](./pics/svm-change-to-2000-words.png)
 
@@ -778,7 +779,7 @@ behaves on unseen data. That is an indication of how well (or not) it will
 perform in real life.
 
 This is where the test dataset comes in. It has been held back so far, to have
-a dataset that the classifer has never seen before.
+a dataset that the classifier has never seen before.
 
 To evaluate with a test dataset change the test options to `Supplied test set`,
 load the dataset and configure the class attribute (the same we are using for
