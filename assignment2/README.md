@@ -29,7 +29,7 @@ files, one with train data and another with test dataset.
 
 Although Weka could read and transform this format, we chose to prepare the
 data with a Python script. The script converts the files into Weka's ARFF
-format. Having the data in ARFF simplfies some of the steps in Weka.
+format. Having the data in ARFF format simplifies some of the steps in Weka.
 
 Details of preprocessing are described in [step 1](h#step-1---preprocessing-the-data).
 
