@@ -39,14 +39,14 @@ to create document-word (or document-term) matrix for the train dataset in Weka.
 
 ### Results for the Naive Bayes classifier
 
-The Naives Bayes classifier was trained with a combination of parameters.
+The Naive Bayes classifier was trained with a combination of parameters.
 
 The best performing classifier used `StringToWordVector` with `outputWordCounts`
 set to `True` and `wordsToKeep` set to 2000, followed by the attribute selection
 filter `AttributeSelection`.
 
-This classifer achieved 85.34% accuracy in the training phase (with cross-
-validation) and 84.24% when validate with the test set.
+This classifier achieved 85.3% accuracy in the training phase (with
+cross-validation) and 84.2% when validated with the test set.
 
 Details to configure and fine-tune the Naive Bayes classifier are described in
 [step 4](#step-4---classifying-and-fine-tuning-with-a-naive-bayes-classifier).
@@ -56,7 +56,7 @@ Details to configure and fine-tune the Naive Bayes classifier are described in
 The SVM classifier was also trained with a combination of parameters.
 
 The best performing classifier used `StringToWordVector` with `outputWordCounts`
-set to `True`, `wordsToKeep` set to 2000. Using tf-idf, by setting
+set to `True` and `wordsToKeep` set to 2000. Using tf-idf, by setting
 `IDFTransform` and `TFTransform` to `True` was needed to get the best
 accuracy for this classifier. Attribute selection, with the `AttributeSelection`
 filter was also needed.
@@ -131,9 +131,9 @@ A possible problem is class imbalance. Within a dataset each class should be
 as frequent as they are in the real data. For example, if class A is twice as
 frequent as class B in the real data, then the train and test data set should
 have twice as many samples of A than B. Across the datasets the class should
-have the same frequency. For example, if class A occurss twice as frequently
+have the same frequency. For example, if class A occurs twice as frequently
 as other classes in the train dataset, it should also occur twice as
-frequenlty in the test dataset. This is taken care of by balancing classes
+frequently in the test dataset. This is taken care of by balancing classes
 within the datasets.
 
 To load and inspect in Weka:
@@ -144,10 +144,9 @@ To load and inspect in Weka:
 ![Inspecting the train dataset](./pics/inspect-train-dataset.png)
 
 In the picture above we can see that the dataset is imbalanced. The `student`
-class has more samples than the other classes. In this case we should expect
-to have more students since they outnumber faculty in real life by an order of
-magnitude or more. This imbalance within the dataset is not a problem in this
-case.
+class has more samples than the other classes. We should expect to have more
+students since they outnumber faculty in real life by an order of magnitude or
+more. This imbalance within the dataset is not a problem in this case.
 
 Note that at this point the data shows only two pieces of data, the class and
 the text. All words from the document are under "text". In a later step we
