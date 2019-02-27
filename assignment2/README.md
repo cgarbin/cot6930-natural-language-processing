@@ -6,10 +6,6 @@ Christian Garbin
 
 Document classification using [Weka](https://www.cs.waikato.ac.nz/ml/weka/).
 
-## Report summary
-
-TODO: summarize the report contents and results
-
 ## Assignment details
 
 > Use Naïve Bayes and SVM in Weka to conduct text classification and return
@@ -23,6 +19,34 @@ Input data:
 > faculty, project, and course. The data set has been preprocessed with
 > removing stop words and stemming. So you only need to count the word
 > frequency to generate a document-word matrix before you start classification.
+
+## Report summary
+
+### Datasets preprocessing and inspection
+
+Datasets for the assignment was provided in the form of two space-separated
+files, one with train data and another with test dataset.
+
+Although Weka could read and transform this format, we chose to prepare the
+data with a Python script. The script converts the files into Weka's ARFF
+format. Having the data in ARFF simplfies some of the steps in Weka.
+
+Details of preprocessing are described in [step 1](h#step-1---preprocessing-the-data).
+
+[Step 2](h#step-2---inspecting-the-train-dataset) inspects the datasets and
+
+### Naive Bayes classifier
+
+The Naives Bayes classifier was trained with a combination of parameters.
+
+The best performing classifier used `StringToWordVector` with `outputWordCounts`
+set to `True`and `wordsToKeep` set to 2000, followed by the attribute selection
+filter `AttributeSelection`.
+
+This classifer achieved 85.34% accuracy in the training phase (with cross-
+validation) and 84.24% when validate with the test set.
+
+Details of the experiements to fine-tune the classifier are []
 
 ## Step 1 - Preprocessing the data
 
@@ -63,10 +87,6 @@ Note that the attribute starts with the prefix `type_`. This was done because
 Weka's classifiers (at least some of them) expect the attribute name to be
 unique, i.e. to not appear as part of the document itself.
 
-This is the error that Weka shows if we don't add the `type_` prefix:
-
-TODO: add example of this error.
-
 Although Weka is capable of transforming data, we decided to transform the
 data using [a Python script](./toarff.py), mainly because of familiarity with
 Python and how easy it is to perform these text transformations using it.
@@ -80,7 +100,9 @@ Run the script in the train and test dataset files.
 At this point we should have two ARFF files, one for the train dataset and one
 for the test data set, ready to load in Weka.
 
-## Step 2 - Inspecting the train dataset
+## Step 2 - Inspecting the datasets
+
+### Inspecting the train dataset
 
 In this section we will inspect the train dataset using Weka. The goals are to
 have a general understanding of the datset and to check if there are problems
@@ -112,7 +134,7 @@ Note that at this point the data shows only two pieces of data, the class and
 the text. All words from the document are under "text". In a later step we
 will parse the document to extract words.
 
-## Step 3 - Inspecting the test dataset
+### Inspecting the test dataset
 
 In this step we will repeat what was done for the train data (above), now with
 the test data.
@@ -124,7 +146,7 @@ Follow the same steps to start the Explorer and open the test dataset file.
 As in the train dataset, the test dataset is also imbalanced, but it is also
 expected, for the same reasons discussed for the train dataset.
 
-## Step 4 - Analyzing the datasets
+### Analyzing the datasets
 
 The imbalance within each dataset is not a concern in this case. The classes
 are imbalanced within each dataset because of the nature of the data. A
@@ -148,7 +170,7 @@ The table shows that classes are equally represented in the train and test
 datasets. Therefore we have a representative test dataset, one that will give
 us confidence in the model evaluation.
 
-## Step 5 - Creating the train dataset document-word matrix
+## Step 3 - Creating the train dataset document-word matrix
 
 The document-word matrix ([or document-term matrix](https://en.wikipedia.org/wiki/Document-term_matrix))
 shows the frequency of words in each document (in our example, the frequency of
@@ -192,7 +214,7 @@ line of the test file in our case).
 
 ![Document-term matrix test dataset](./pics/document-term-matrix-result.png)
 
-## Step 6 - Classifying and fine-tuning with a Naive Bayes classifier
+## Step 4 - Classifying and fine-tuning with a Naive Bayes classifier
 
 Before starting the fine-tuning process we will review two concepts that guide
 that process.
@@ -533,7 +555,7 @@ And these are the metrics for the training phase, with cross-validation:
                      0.673    0.031    0.746      0.673    0.707      0.671    0.932     0.733     type_project
     Weighted Avg.    0.853    0.064    0.853      0.853    0.853      0.793    0.953     0.896
 
-## Step 7 - Classifying and fine-tuning with an SVM classifier
+## Step 5 - Classifying and fine-tuning with an SVM classifier
 
 In this section we will use the `libsvm` classifier in Weka. Another flavor of
 the SVM classifier, called `SMO`, is also available in Weka. Since the
