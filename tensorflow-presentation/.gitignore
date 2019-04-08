@@ -1,0 +1,4 @@
+.ipynb_checkpoints
+
+# TensorFlow graphs created by the notebook
+tf_logs*
