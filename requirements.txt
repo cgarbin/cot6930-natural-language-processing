@@ -4,3 +4,6 @@ keras
 tensorflow
 jupyterlab
 
+# assignment 3
+textblob
+
