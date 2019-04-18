@@ -55,9 +55,9 @@ Is represented in TensorFlow as:
 
 Which results in this graph:
 
-![Computation Graph](./images/what-is-tf-simple-graph).
+![Computation Graph](./images/what-is-tf-simple-graph.png).
 
 Putting it all together, the computation, the TensorFlow equivalent and its
 graph:
 
-[!Computation Graph](./images/what-is-tf-all-together)
+[!Computation Graph](./images/what-is-tf-all-together.png)
