@@ -57,7 +57,12 @@ Which results in this graph:
 
 ![Computation Graph](./images/what-is-tf-simple-graph.png)
 
-Putting it all together, the computation, the TensorFlow equivalent and its
-graph:
+The nodes are the computations to be performed and the edges is where data (the
+tensors) flows from one edge to another (and now we have the pieces for the
+name: _TensorFlow_).
+
+Putting it all together: the computation, the TensorFlow equivalent and its
+graph showing the nodes (computations) and edges (where data flows from one
+node to the next):
 
 ![Computation Graph](./images/what-is-tf-all-together.png)
