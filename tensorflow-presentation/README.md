@@ -8,7 +8,7 @@ It is divided in two parts:
 1. What TensorFlow is
 1. Applying TensorFlow to natural language process (NLP)
 
-This introduction has a companion slide deck [in this file](./COT-6930 presentation TensorFlow.pdf).
+This introduction has a companion slide deck [in this file](<./COT-6930 presentation TensorFlow.pdf>).
 
 ## What is TensorFlow?
 
