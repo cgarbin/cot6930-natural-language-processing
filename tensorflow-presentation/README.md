@@ -111,8 +111,10 @@ several layers, each composed of hundreds or thousands of neurons.
 ![Neural network](images/neural-network-schematic.png)
 
 The internal representation of a neural network, what the computer "sees", is
-a seriers of large tensors. Training such a network and making inferences
+a series of large tensors. Training such a network and making inferences
 require billions of operations on those large tensors.
+
+![Neural network as tensor](images/neural-network-as-tensor.png)
 
 This is where _high performance_ comes in. TensorFlow is able to detect the
 best hardware (GPUs or TPU) and parallelizes as many operations as possible
