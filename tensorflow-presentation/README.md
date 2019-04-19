@@ -1,9 +1,9 @@
 # TensorFlow introduction for natural language processing
 
-This is a simple introduction to TensorFlow, with emphasis in natural language
-processing (NLP) applications.
+This is a simple introduction to TensorFlow, with an emphasis in natural
+language processing (NLP) applications.
 
-It is divided in two parts:
+This document is divided into two main sections:
 
 1. What TensorFlow is
 1. Applying TensorFlow to natural language process (NLP)
@@ -14,7 +14,7 @@ This introduction has a companion slide deck [in this file](<./COT-6930 presenta
 
 ### What is a tensor?
 
-_Tensor_ is a n-dimensional data structure, where `n` can be any number greater
+_Tensor_ is an n-dimensional data structure, where `n` can be any number greater
 than or equal to zero. The number of dimensions is the _rank_ of the tensor.
 
 Examples of tensors:
@@ -59,7 +59,7 @@ Which results in this graph:
 
 ![Computation Graph](./images/what-is-tf-simple-graph.png)
 
-The nodes are the computations to be performed and the edges is where data (the
+The nodes are the computations to be performed and the edges are where data (the
 tensors) flows from one edge to another (and now we have the pieces for the
 name: _TensorFlow_).
 
@@ -80,7 +80,7 @@ Representing computations as graphs allows TensorFlow to:
 1. Distribute them efficiently for parallel execution.
 1. Reuse them in different environments.
 
-To illustrate that, let's see a another example. In this graph we create a
+To illustrate that, let's see another example. In this graph we create a
 simplified artificial neuron, with an input `x`, weight `w` and output `y`
 (technically, it's missing a non-linearity after the output to be neuron - it's
 simplified for illustration).
@@ -165,7 +165,7 @@ analysis.
 
 Running a network in different environments, e.g. a server in a data center,
 inside a browser, on low-powered device such as smartphones, requires
-adapation to the neural network and to the engine itself.
+adaption to the neural network and to the engine itself.
 
 TensorFlow offers deployment models optimized for different environments.
 
@@ -203,7 +203,7 @@ At the higher levels of language processing, TensorFlow has support for
 [word and sentence embedding](https://www.tensorflow.org/guide/embedding) and
 [recurrent neural networks, such as LTSM](https://www.tensorflow.org/tutorials/sequences/recurrent).
 
-Because embedding is an important part of natural language processsing,
+Because embedding is an important part of natural language processing,
 TensorFlow has a powerful [embedding projector](https://projector.tensorflow.org/),
 to help visualize and debug word and sentence embeddings.
 
@@ -214,13 +214,13 @@ to help visualize and debug word and sentence embeddings.
 This example is based on TensorFlow's [text classification tutorial](https://www.tensorflow.org/hub/tutorials/text_classification_with_tf_hub).
 The goal is to classify a movie review as _positive_ or _negative_.
 
-In this example we will use these pieces of TensorFlow to build a moview review
+In this example we will use these pieces of TensorFlow to build a movie review
 sentiment analysis.
 
 -   A pretrained word embedding from TensorFlow Hub, which also takes care of
     tokenization.
 -   A classifier module.
--   An optmizer module.
+-   An optimizer module.
 
 Before going into the code, let's review a classifier at a high level: we need
 to extract features from the reviews (using word embedding in this case),
