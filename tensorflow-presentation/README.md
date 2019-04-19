@@ -176,7 +176,7 @@ TensorFlow offers deployment models optimized for different environments.
 -   [TensorFlow Lite](https://www.tensorflow.org/lite) runs on low-powered
     devices, with limited computing and memory.
 
-### Putting is all together
+### Putting it all together
 
 [TensorFlow](https://www.tensorflow.org/) is
 
@@ -187,3 +187,23 @@ TensorFlow offers deployment models optimized for different environments.
     [TensorFlow Lite](https://www.tensorflow.org/lite)).
 -   ...backed by a collection of reusable modules ([TensorFlow Hub](https://www.tensorflow.org/hub))
     and a visulization/debugging tool ([TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard)).
+
+## TensorFlow and natural language processing (NLP)
+
+Natural language processing in TensorFlow is available at different levels.
+
+At the lower levels it has basic utility functions for
+[tokenization](https://www.tensorflow.org/datasets/api_docs/python/tfds/features/text/Tokenizer),
+[vocabulary creation](https://www.tensorflow.org/tfx/transform/api_docs/python/tft/compute_and_apply_vocabulary),
+[n-grams](https://www.tensorflow.org/tfx/transform/api_docs/python/tft/ngrams),
+and [tf-idf](https://www.tensorflow.org/tfx/transform/api_docs/python/tft/tfidf),
+among others.
+
+At the higher levels of language processing, TensorFlow has support for
+[word and sentence embedding](https://www.tensorflow.org/guide/embedding) and
+[recurrent neural networks, such as LTSM](https://www.tensorflow.org/tutorials/sequences/recurrent).
+
+Because embedding is an important part of natural language processsing,
+TensorFlow has a powerful [embedding projector](https://projector.tensorflow.org/).
+
+![Embedding projector](./images/embedding-projector.png)
