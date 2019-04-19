@@ -171,7 +171,7 @@ TensorFlow offers deployment models optimized for different environments.
 
 -   [TensorFlow](https://www.tensorflow.org/) makes the best use of servers.
 -   [TensorFlow.js](https://www.tensorflow.org/js) is optimized for applications
-    that use JavaScript on a server ([Node.js](https://nodejs.org/en/), or
+    that use JavaScript on a server ([Node.js](https://nodejs.org/en/)), or
     inside a browser, where it makes use of WebGL to accelerate models.
 -   [TensorFlow Lite](https://www.tensorflow.org/lite) runs on low-powered
     devices, with limited computing and memory.
@@ -204,14 +204,15 @@ At the higher levels of language processing, TensorFlow has support for
 [recurrent neural networks, such as LTSM](https://www.tensorflow.org/tutorials/sequences/recurrent).
 
 Because embedding is an important part of natural language processsing,
-TensorFlow has a powerful [embedding projector](https://projector.tensorflow.org/).
+TensorFlow has a powerful [embedding projector](https://projector.tensorflow.org/),
+to help visualize and debug word and sentence embeddings.
 
 ![Embedding projector](./images/embedding-projector.png)
 
 ### Example using movie review sentiment analysis
 
 This example is based on TensorFlow's [text classification tutorial](https://www.tensorflow.org/hub/tutorials/text_classification_with_tf_hub).
-The goal is to classify a review as _positive_ or _negative_.
+The goal is to classify a movie review as _positive_ or _negative_.
 
 In this example we will use these pieces of TensorFlow to build a moview review
 sentiment analysis.
@@ -222,7 +223,7 @@ sentiment analysis.
 -   An optmizer module.
 
 Before going into the code, let's review a classifier at a high level: we need
-to extract features from the documents (using word embedding in this case),
+to extract features from the reviews (using word embedding in this case),
 then we need to train a classifier with a training dataset and after that we
 can use the trained classifier to make predictions on unseen data (the test
 dataset).
