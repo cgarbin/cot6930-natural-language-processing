@@ -92,7 +92,7 @@ correct value `-1`.
 
 We will create a graph that trains the network to find a value for the weight
 `w` that results in the correct output when the input is `1`. To do that we
-will use a [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent),
+will use a [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent)
 optimizer.
 
 The picture below shows the TensorFlow code and the graph it creates. With a
@@ -103,4 +103,17 @@ few lines of code we are able to reuse an entire optimization operation, the
 
 That illustrates reusing packaged components, but it's a very small network.
 
-### The need for high-performance computation
+#### The need for high-performance computation
+
+Neural networks in real life are much larger. The typical neural network has
+several layers, each composed of hundreds or thousands of neurons.
+
+![Neural network](images/neural-network-schematic.png)
+
+The internal representation of a neural network, what the computer "sees", is
+a seriers of large tensors. Training such a network and making inferences
+require billions of operations on those large tensors.
+
+This is where _high performance_ comes in. TensorFlow is able to detect the
+best hardware (GPUs or TPU) and parallelizes as many operations as possible
+on that hardware.
