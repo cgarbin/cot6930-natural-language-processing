@@ -186,4 +186,4 @@ TensorFlow offers deployment models optimized for different environments.
     [TensorFlow.js](https://www.tensorflow.org/js),
     [TensorFlow Lite](https://www.tensorflow.org/lite)
 -   ...backed by a collection of reusable modules ([TensorFlow Hub example](images/tensorflow-hub-sample.png))
-    and a visulization/debugging tool [TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard).
+    and a visulization/debugging tool ([TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard)).
