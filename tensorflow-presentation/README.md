@@ -118,7 +118,7 @@ it require billions of operations on those large tensors.
 
 This is where _high performance_ comes in. TensorFlow is able to detect the
 best hardware available on a computer (GPUs or TPUs) or grid of computers and
-parallelize as many operations as possible on that hardware.
+[distribute operations on that grid](https://www.tensorflow.org/guide/distribute_strategy).
 
 ### TensorFlow is more than a library
 
