@@ -29,7 +29,9 @@ Examples of tensors:
 
 TensorFlow is a generic, high-performance computation engine.
 
-It represents computations as graphs.
+#### Graphs
+
+TensorFlow represents computations as graphs.
 
 For example, this computation:
 
@@ -66,3 +68,39 @@ graph showing the nodes (computations) and edges (where data flows from one
 node to the next):
 
 ![Computation Graph](./images/what-is-tf-all-together.png)
+
+#### Why use graphs
+
+Why go through the trouble of transforming computations from simple code to the
+more complex graph representation?
+
+Representing computations as graphs allows TensorFlow to:
+
+1. Package them in higher-level, reusable operations.
+1. Distribute them efficiently for parallel execution.
+1. Reuse them in different environments.
+
+To illustrate that, let's see a another example. In this graph we create a
+simplified artificial neuron, with an input `x`, weight `w` and output `y`
+(technically, it's missing a non-linearity after the output to be neuron - it's
+simplified for illustration).
+
+![Simple neuron](./images/simpleneuron.png)
+
+This neuron is the sole member of a neural "network" that needs to output the
+correct value `-1`.
+
+We will create a graph that trains the network to find a value for the weight
+`w` that results in the correct output when the input is `1`. To do that we
+will use a [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent),
+optimizer.
+
+The picture below shows the TensorFlow code and the graph it creates. With a
+few lines of code we are able to reuse an entire optimization operation, the
+`GradientDescentOptimzer`. It is a prepackaged graph, ready to be reused.
+
+![Gradient descent](./images/gradient-descent.png)
+
+That illustrates reusing packaged components, but it's a very small network.
+
+### The need for high-performance computation
