@@ -245,8 +245,7 @@ Piecing it all together, the code looks like this:
 
     # ... read the movie data
 
-    # Extract features with a pretrained (on Google News)
-    # word embedding (also tokenizes)
+    # Extract features with a pretrained word embedding (also tokenizes)
     embedded_text_feature_column = hub.text_embedding_column(
         key="sentence",
         module_spec="https://tfhub.dev/google/nnlm-en-dim128/1")
