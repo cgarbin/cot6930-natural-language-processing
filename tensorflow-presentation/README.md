@@ -272,3 +272,16 @@ To visualize where the pieces are used, here is the high-level view of the
 classification process again, now with the relevant pieces of code in place.
 
 ![Classifier with code](./images/text-classifier-with-code.png)
+
+## Where to find more information
+
+-   Graphs are a fundamental concept in TensorFlow. [This page](https://www.tensorflow.org/guide/graphs)
+    explains what they are from the ground up, and [this page](https://www.tensorflow.org/guide/graph_viz)
+    shows how to use TensorBoard to visualize them.
+-   [Chapter 1 of O'reilly's “Hello, TensorFlow!” tutorial](https://www.oreilly.com/library/view/hello-tensorflow/9781491971628/ch01.html),
+    a great introduction to TensorFlow
+-   A complete [neural machine translation (seq2seq) tutorial](https://github.com/tensorflow/nmt).
+
+For a "just teach me how to start using it right away" approach, the
+[movie review sentiment analysis tutorial](https://www.tensorflow.org/hub/tutorials/text_classification_with_tf_hub),
+used earlier in this document, is the best place to start.
