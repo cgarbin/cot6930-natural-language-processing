@@ -171,8 +171,8 @@ TensorFlow offers deployment models optimized for different environments.
 
 -   [TensorFlow](https://www.tensorflow.org/) makes the best use of servers.
 -   [TensorFlow.js](https://www.tensorflow.org/js) is optimized for applications
-    that use JavaScript on the server ([Node.js](https://nodejs.org/en/), or
-    inside a browser, where it makes use ofr WebGL to accelerate models.
+    that use JavaScript on a server ([Node.js](https://nodejs.org/en/), or
+    inside a browser, where it makes use of WebGL to accelerate models.
 -   [TensorFlow Lite](https://www.tensorflow.org/lite) runs on low-powered
     devices, with limited computing and memory.
 
@@ -264,7 +264,7 @@ Piecing it all together, the code looks like this:
     test_eval_result = estimator.evaluate(input_fn=predict_test_input_fn)
     print("Test set accuracy: {accuracy}".format(**test_eval_result))
 
-See the [Jupyter notebook in GitHub](https://github.com/cgarbin/cot6930-natural-language-processing/blob/master/tensorflow-presentation/TensorFlowTextClassificationExample.ipynb)
+See this [Jupyter notebook in GitHub](https://github.com/cgarbin/cot6930-natural-language-processing/blob/master/tensorflow-presentation/TensorFlowTextClassificationExample.ipynb)
 if you want to run the code on your own.
 
 To visualize where the pieces are used, here is the high-level view of the
