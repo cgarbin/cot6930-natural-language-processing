@@ -207,3 +207,68 @@ Because embedding is an important part of natural language processsing,
 TensorFlow has a powerful [embedding projector](https://projector.tensorflow.org/).
 
 ![Embedding projector](./images/embedding-projector.png)
+
+### Example using movie review sentiment analysis
+
+This example is based on TensorFlow's [text classification tutorial](https://www.tensorflow.org/hub/tutorials/text_classification_with_tf_hub).
+The goal is to classify a review as _positive_ or _negative_.
+
+In this example we will use these pieces of TensorFlow to build a moview review
+sentiment analysis.
+
+-   A pretrained word embedding from TensorFlow Hub, which also takes care of
+    tokenization.
+-   A classifier module.
+-   An optmizer module.
+
+Before going into the code, let's review a classifier at a high level: we need
+to extract features from the documents (using word embedding in this case),
+then we need to train a classifier with a training dataset and after that we
+can use the trained classifier to make predictions on unseen data (the test
+dataset).
+
+![Text classifier high level](./images/text-classifier-high-level.png)
+
+Starting with feature extraction: TensorFlow Hub has
+[pretrained word embedding modules](https://tfhub.dev/s?module-type=text-embedding),
+several of them trained on Google's own very large vocabulary. For this example
+we will use `nnlm-en-dim128-with-normalization`.
+
+![Word embedding](./images/text-classifier-embedding.png)
+
+Once we have the feature extraction step in place, we need to build a
+classifier. We will use a neural network classifier, which means we also need
+to choose an optimizer for the network. TensorFlow has several modules ready
+to be used. We will use `DNNClassifier` and `AdagradOptimizer`.
+
+Piecing it all together, the code looks like this:
+
+    # ... read the movie data
+
+    # Extract features with a pretrained (on Google News)
+    # word embedding (also tokenizes)
+    embedded_text_feature_column = hub.text_embedding_column(
+        key="sentence",
+        module_spec="https://tfhub.dev/google/nnlm-en-dim128/1")
+
+    # Neural network classifier, with two layers
+    estimator = tf.estimator.DNNClassifier(
+        hidden_units=[500, 100],
+        feature_columns=[embedded_text_feature_column],
+        n_classes=2,
+        optimizer=tf.train.AdagradOptimizer(learning_rate=0.003))
+
+    # Train the classifier
+    estimator.train(input_fn=train_input_fn, steps=1000);
+
+    # Verify accuracy on the test data
+    test_eval_result = estimator.evaluate(input_fn=predict_test_input_fn)
+    print("Test set accuracy: {accuracy}".format(**test_eval_result))
+
+See the [Jupyter notebook in GitHub](https://github.com/cgarbin/cot6930-natural-language-processing/blob/master/tensorflow-presentation/TensorFlowTextClassificationExample.ipynb)
+if you want to run the code on your own.
+
+To visualize where the pieces are used, here is the high-level view of the
+classification process again, now with the relevant pieces of code in place.
+
+![Classifier with code](./images/text-classifier-with-code.png)
