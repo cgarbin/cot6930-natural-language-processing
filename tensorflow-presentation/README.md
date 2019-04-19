@@ -184,6 +184,6 @@ TensorFlow offers deployment models optimized for different environments.
     on specialized hard (GPU, TPU, computer grids)
 -   ...adapted to run on diverse environments ([TensorFlow](https://www.tensorflow.org/),
     [TensorFlow.js](https://www.tensorflow.org/js),
-    [TensorFlow Lite](https://www.tensorflow.org/lite)
+    [TensorFlow Lite](https://www.tensorflow.org/lite)).
 -   ...backed by a collection of reusable modules ([TensorFlow Hub](https://www.tensorflow.org/hub))
     and a visulization/debugging tool ([TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard)).
