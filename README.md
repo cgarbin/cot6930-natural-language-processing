@@ -6,13 +6,11 @@ Text processing with [OpenNLP](https://opennlp.apache.org/).
 
 Assignment report [here](https://github.com/cgarbin/cot6930-natural-language-processing/blob/master/assignment1/COT-6930%20assignment%201%20report%20cgarbin.pdf).
 
-- Detect sentences with 
-- Extract tokens
-- Classify tokens
-- Detect parts-of-speech
-- Find named entities
-
-This is the Java code only. See the report for instructions to add the OpenNLP libraries to the project.
+- Detect sentences with `SentenceDetectorME`
+- Extract tokens with `SimpleTokenizer`, `WhitespaceTokenizer`, `TokenizerME` and compare their performance
+- Detect parts-of-speech with `POSTaggerME`
+- Find named entities with the generic entity finder `NameFinderME`, inititalized with persons (`en-ner-person.bin`),
+  locations (`en-ner-location.bin`), money/currencies (`en-ner-money.bin`), and percentages (`en-ner-percentage.bin`).
 
 ## Assignment 2
 
