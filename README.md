@@ -14,7 +14,7 @@ Assignment report [here](https://github.com/cgarbin/cot6930-natural-language-pro
 
 ## Assignment 2
 
-Document classification using Weka. 
+Document classification using [Weka](https://www.cs.waikato.ac.nz/~ml/weka/).
 
 Assignment report [here](https://github.com/cgarbin/cot6930-natural-language-/trprocessingee/master/assignment2) (the README file).
 
