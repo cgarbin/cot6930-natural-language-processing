@@ -186,7 +186,7 @@ TensorFlow offers deployment models optimized for different environments.
     [TensorFlow.js](https://www.tensorflow.org/js),
     [TensorFlow Lite](https://www.tensorflow.org/lite)).
 -   ...backed by a collection of reusable modules ([TensorFlow Hub](https://www.tensorflow.org/hub))
-    and a visulization/debugging tool ([TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard)).
+    and a visualization/debugging tool ([TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard)).
 
 ## TensorFlow and natural language processing (NLP)
 
@@ -213,6 +213,9 @@ to help visualize and debug word and sentence embeddings.
 
 This example is based on TensorFlow's [text classification tutorial](https://www.tensorflow.org/hub/tutorials/text_classification_with_tf_hub).
 The goal is to classify a movie review as _positive_ or _negative_.
+
+The full code for the example is available
+[in this Jupyter notebook](./TensorFlowTextClassificationExample.ipynb).
 
 In this example we will use these pieces of TensorFlow to build a movie review
 sentiment analysis.
