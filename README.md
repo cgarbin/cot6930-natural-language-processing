@@ -16,7 +16,7 @@ Assignment report [here](https://github.com/cgarbin/cot6930-natural-language-pro
 
 Document classification using [Weka](https://www.cs.waikato.ac.nz/~ml/weka/).
 
-Assignment report [here](https://github.com/cgarbin/cot6930-natural-language-/trprocessingee/master/assignment2) (the README file).
+Assignment report [here](https://github.com/cgarbin/cot6930-natural-language-processingee/master/assignment2) (the README file).
 
 - Create ARFF train and test file from plain text file (already tokenized and stemmed)
 - Use Weka's `StringToWordVector` to create word vectors and `FilteredClassifier` to split into train and test datasets
